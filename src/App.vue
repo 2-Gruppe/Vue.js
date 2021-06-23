@@ -6,6 +6,7 @@
 
     <v-content>
       <router-view></router-view>
+      <router-view name="Cards"></router-view>
     </v-content>
 
     <Footer />

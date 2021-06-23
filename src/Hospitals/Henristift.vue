@@ -1,91 +1,133 @@
 <template lang="">
-  <v-container fluid>
-    <v-row class="mb-6" no-gutters>
-      <v-img max-height="300" src="../assets/Hospitals/herzogin.jpg"></v-img>
-    </v-row>
-    <span class="green--text subtitle-1 mb-2">Klinikbewertungen</span
-    ><span class="red--text subtitle-1 mb-2">Google</span>
+  <v-layout row wrap>
+    <v-img max-height="250" src="../assets/Hospitals/bucholz.jpg"></v-img>
+    <br />
+    <!-- Klinikbewertungen carousel -->
 
-    <v-switch v-model="show" :label="klinikbewertungen"></v-switch>
-    <v-row class="mb-6" no-gutters>
-      <v-col cols="8" class="fill-height" height="400">
-        <v-spacer></v-spacer>
+    <v-card elevation="24" width="750" class="mx-auto rounded-lg" v-if="show">
+      <v-system-bar lights-out> </v-system-bar>
+      <v-carousel
+        :continuous="true"
+        :show-arrows="true"
+        hide-delimiter-background
+        delimiter-icon="mdi-minus"
+        height="450"
+      >
+        <v-carousel-item v-for="(slide, i) in images" :key="i" :src="slide.src">
+          <strong>
+            {{ slide.name }}
+          </strong>
+        </v-carousel-item>
+      </v-carousel>
+    </v-card>
 
-        <v-card elevation="1" tile class=" my-12 rounded-lg " v-if="show">
-          <v-card-title>
-            Kliniken
-            <v-spacer></v-spacer>
-            <v-text-field
-              v-model="search"
-              append-icon="mdi-magnify"
-              label="Search"
-              single-line
-              hide-details
-            ></v-text-field>
-          </v-card-title>
-          <v-data-table
-            dense
-            :items-per-page="4"
-            :headers="headers"
-            :items="desserts"
-            :search="search"
-            class="elevation-1 text-sm-center"
-          >
-            <template v-slot:item.group="{ item }">
-              <v-chip :color="getColor(item.group)" dark>
-                {{ item.group }}
-              </v-chip>
-            </template>
-            <template v-slot:item.gesamt="{ item }">
-              <v-chip :color="getFarbe(item.gesamt)" dark>
-                {{ item.gesamt }}
-              </v-chip>
-            </template></v-data-table
-          >
-        </v-card>
+    <!-- GoogleMaps carousel -->
+
+    <v-card elevation="24" width="750" class="mx-auto rounded-lg" v-if="!show">
+      <v-system-bar lights-out> </v-system-bar>
+
+      <v-carousel
+        :continuous="true"
+        :show-arrows="true"
+        hide-delimiter-background
+        delimiter-icon="mdi-minus"
+        height="450"
+      >
+        <v-carousel-item
+          v-for="(img, i) in googleimages"
+          :key="i"
+          :src="img.src"
+        >
+          <strong class="font-weight-bold text-h6 mx-2">
+            {{ img.name }}
+          </strong>
+        </v-carousel-item>
+      </v-carousel>
+    </v-card>
+
+    <!-- Switch button -->
+
+    <v-col cols="12">
+      <storng v-if="!show" class="red--text mx-2 mb-2">GoogleMaps</storng>
+      <strong v-if="show" class="green--text mx-2 mb-2"
+        >Klinikbewertungen.de</strong
+      >
+      <v-switch
+        class=" mx-2 "
+        v-model="show"
+        color="grey lighten-1"
+        label="Source auswahlen"
+      ></v-switch>
+    </v-col>
+
+    <!-- Klinikbewertungen data -->
+
+    <v-card elevation="10" tile class=" my-12 rounded-lg " v-if="show">
+      <v-card-title>
+        Kliniken
+        <v-divider></v-divider>
+        <span class="red--text subtitle-1 mb-2"
+          >{{ kjson.length }} Bewertungen gefunden</span
+        >
         <v-spacer></v-spacer>
-        <v-card v-if="!show">
-          <v-card-title>
-            Kliniken
-            <v-spacer></v-spacer>
-            <v-text-field
-              v-model="search"
-              append-icon="mdi-magnify"
-              label="Search"
-              single-line
-              hide-details
-            ></v-text-field>
-          </v-card-title>
-          <v-data-table
-            dense
-            :items-per-page="4"
-            :headers="headgoogle"
-            :items="google"
-            :search="search"
-            class="elevation-5 text-sm-center"
-          >
-          </v-data-table>
-        </v-card>
-      </v-col>
-      <v-divider></v-divider>
-      <v-col cols="4" v-if="show">
-        <v-card elevation="10" tile class="mx-auto my-12 rounded-lg ">
-          <v-img
-            :aspect-ratio="16 / 9"
-            v-for="image in images"
-            :key="image"
-            :src="image"
-            class="elevation-1"
-          >
-            <v-divider></v-divider>
-            <p class="text-subtitle-4 text-xl-left">
-              {{ image.name }}
-            </p>
-          </v-img>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+        <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Search"
+          single-line
+          hide-details
+        ></v-text-field>
+      </v-card-title>
+      <v-data-table
+        dense
+        :items-per-page="5"
+        :headers="headers"
+        :items="desserts"
+        :search="search"
+        class="elevation-1 text-sm-center"
+      >
+        <template v-slot:item.group="{ item }">
+          <v-chip :color="getColor(item.group)" dark>
+            {{ item.group }}
+          </v-chip>
+        </template>
+        <template v-slot:item.gesamt="{ item }">
+          <v-chip :color="getFarbe(item.gesamt)" dark>
+            {{ item.gesamt }}
+          </v-chip>
+        </template></v-data-table
+      >
+    </v-card>
+
+    <!-- GoogleMaps data -->
+
+    <v-card elevation="10" tile class=" my-12 rounded-lg " v-if="!show">
+      <v-card-title>
+        Kliniken
+        <v-divider></v-divider>
+        <span class="red--text subtitle-1 mb-2"
+          >{{ gjson.length }} Bewertungen gefunden</span
+        >
+        <v-spacer></v-spacer>
+        <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Search"
+          single-line
+          hide-details
+        ></v-text-field>
+      </v-card-title>
+      <v-data-table
+        dense
+        :items-per-page="5"
+        :headers="headgoogle"
+        :items="google"
+        :search="search"
+        class="elevation-5 text-sm-center"
+      >
+      </v-data-table>
+    </v-card>
+  </v-layout>
 </template>
 <script>
 import kjson from '../assets/Herzogin Elisabeth Hospital_klinikDe.json';
@@ -147,6 +189,20 @@ export default {
           src: require('../images-klinikbewertungen/PositiveNegativeProJahr/PositiveNegativeProJahr_Herzogin Elisabeth Hospital.png'),
         },
       ],
+      googleimages: [
+        {
+          name: 'PolaritiyProJahr',
+          src: require('../images-google/PolaritiyProJahr/PolaritiyProJahr_Herzogin Elisabeth Hospital_google.png'),
+        },
+        {
+          name: 'KommentareProJahr ',
+          src: require('../images-google/KommentareProJahr/KommentareProJahr_Herzogin Elisabeth Hospital_google.png'),
+        },
+        {
+          name: 'PositiveNegativeProJahr ',
+          src: require('../images-google/PositiveNegativeProJahr/PositiveNegativeProJahr_Herzogin Elisabeth Hospital_google.png'),
+        },
+      ],
     };
   },
 
@@ -158,12 +214,11 @@ export default {
       else return 'red';
     },
     getFarbe(gesamt) {
-      if (gesamt === 'Sehr zufrieden') return 'green';
+      if (gesamt === 100) return 'green';
       else if (gesamt == 67) return 'blue';
       else if (gesamt == 33) return 'orange';
       else return 'red';
     },
-    handleSourceClick() {},
   },
 };
 </script>

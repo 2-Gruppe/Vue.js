@@ -23,7 +23,7 @@
         min-width="100"
         class="my-5 mx-5 white--text"
         router
-        to="/Carousel"
+        to="/"
       >
         <v-icon>mdi-home</v-icon>Home</v-btn
       >

@@ -13,6 +13,9 @@ export default {
     return {
       items: [
         {
+          src: require('../assets/key-2114046_1280.jpg'),
+        },
+        {
           src: require('../assets/c9.jpg'),
         },
         {
@@ -23,11 +26,7 @@ export default {
         },
 
         {
-          src: require('../assets/c8.jpg'),
-        },
-
-        {
-          src: require('../assets/c5.jpg'),
+          src: require('../assets/newton-s-cradle-balls-sphere-action-60582.jpeg'),
         },
       ],
     };

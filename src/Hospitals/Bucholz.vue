@@ -38,7 +38,7 @@
           :key="i"
           :src="img.src"
         >
-          <strong class="font-weight-bold">
+          <strong class="font-weight-bold text-h6 mx-2">
             {{ img.name }}
           </strong>
         </v-carousel-item>
@@ -47,11 +47,17 @@
 
     <!-- Switch button -->
 
-    <v-col cols="12" height="10">
-      <storng class="red--text subtitle-1 mb-2">GoogleMaps</storng
-      ><v-icon>mdi-sync </v-icon>
-      <strong class="green--text subtitle-1 mb-2">Klinikbewertungen.de</strong>
-      <v-switch v-model="show" color="orange"></v-switch>
+    <v-col cols="12">
+      <storng v-if="!show" class="red--text mx-2 mb-2">GoogleMaps</storng>
+      <strong v-if="show" class="green--text mx-2 mb-2"
+        >Klinikbewertungen.de</strong
+      >
+      <v-switch
+        class=" mx-2 "
+        v-model="show"
+        color="grey lighten-1"
+        label="Source auswahlen"
+      ></v-switch>
     </v-col>
 
     <!-- Klinikbewertungen data -->

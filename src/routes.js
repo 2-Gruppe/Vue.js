@@ -18,11 +18,17 @@ import Herzogin from './Hospitals/Herzogin.vue';
 
 import Carousel from './components/Carousel.vue';
 import Uberuns from './components/Uberuns.vue';
-import Data from './components/Data.vue';
+
 import Cards from './components/Cards.vue';
 
 export const routes = [
-  { path: '/', component: Carousel },
+  {
+    path: '/',
+    components: {
+      default: Carousel,
+      Cards: Cards,
+    },
+  },
   { path: '/Carousel', component: Carousel },
 
   { path: '/Cards', component: Cards },
@@ -45,5 +51,4 @@ export const routes = [
   { path: '/Wahrendorff', component: Wahrendorff },
   { path: '/Winsen', component: Winsen },
   { path: '/Uberuns', component: Uberuns },
-  { path: '/Data', component: Data },
 ];
