@@ -1,6 +1,6 @@
 <template lang="">
   <nav>
-    <v-app-bar color="orange" dark flat padless fixed dense>
+    <v-app-bar color="grey lighten-1" dark flat padless fixed dense>
       <v-app-bar-nav-icon
         id="drawerIcon"
         @click="drawer = !drawer"
@@ -14,25 +14,30 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
-        color="orange"
-        min-width="200"
+        text
+        small
+        color="grey darken-2"
+        min-width="150"
         class="my-5 white--text"
         router
         to="/Carousel"
         @click="show = !show"
       >
-        <v-icon>mdi-home</v-icon>HOME</v-btn
+        <v-icon>mdi-home</v-icon>Home</v-btn
       >
-      <v-spacer></v-spacer>
+
+      <!-- <v-spacer></v-spacer> -->
       <v-btn
-        color="orange"
-        min-width="200"
+        text
+        small
+        color="grey darken-2"
+        min-width="150"
         class="my-5 white--text"
         router
         to="/Cards"
         @click="show = !show"
       >
-        <v-icon>mdi-hospital-building</v-icon>KLINIKEN</v-btn
+        <v-icon>mdi-hospital-building</v-icon>Kliniken</v-btn
       >
     </v-app-bar>
 

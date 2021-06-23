@@ -1,7 +1,7 @@
 <template lang="">
   <v-footer dark padless>
     <v-card class="flex" flat tile>
-      <v-card-title class="orange" dark>
+      <v-card-title class="grey lighten-1" dark>
         <strong class="subheading"
           >Get connected with us on social networks!</strong
         >
@@ -15,11 +15,12 @@
         </v-btn>
       </v-card-title>
 
-      <v-card-text class="py-2 orange--text text-center" height="10">
+      <v-card-text class="py-2 white--text text-center" height="10">
         {{ new Date().getFullYear() }} —
-        <strong class="buchstabe"
-          >TEAM <span class="buchstabe">H</span><span class="buchstabe">F</span
-          ><span class="buchstabe">H</span></strong
+        <strong class="buchstabe white--text"
+          >TEAM <span class="buchstabe white--text">H</span
+          ><span class="buchstabe white--text">F</span
+          ><span class="buchstabe white--text">H</span></strong
         >
       </v-card-text>
     </v-card>

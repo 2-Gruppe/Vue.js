@@ -3,12 +3,12 @@
     <v-row class="mb-6" no-gutters>
       <v-img max-height="300" src="../assets/Hospitals/herzogin.jpg"></v-img>
     </v-row>
-    <span class="red--text subtitle-1 mb-2">Google</span>---
+    <span class="red--text subtitle-1 mb-2">Google</span>
     <span class="green--text subtitle-1 mb-2">Klinikbewertungen</span>
 
     <v-switch
       v-model="show"
-      :label="klinikbewertungen"
+      :label="Klinikbewertungen"
       color="orange"
     ></v-switch>
     <v-row class="mb-6" no-gutters>

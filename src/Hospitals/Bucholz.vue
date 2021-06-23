@@ -1,23 +1,65 @@
 <template lang="">
   <v-layout row wrap>
-    <v-flex xs12 sm6 md3 lg3 v-for="image in images" :key="image">
-      <v-card hover class="ma-4" min-height="300" min-width="300">
-        <v-layout column align-center fill-height class="text-center">
-          <v-img :src="image"></v-img>
+    <v-img max-height="300" src="../assets/Hospitals/bucholz.jpg"></v-img>
+    <br />
+    <!-- Klinikbewertungen carousel -->
 
-          <v-card-title class="font-weight-light">{{
-            image.name
-          }}</v-card-title>
-          <v-spacer></v-spacer>
+    <v-card elevation="24" width="750" class="mx-auto rounded-lg" v-if="show">
+      <v-system-bar lights-out> </v-system-bar>
+      <v-carousel
+        :continuous="true"
+        :show-arrows="true"
+        hide-delimiter-background
+        delimiter-icon="mdi-minus"
+        height="450"
+      >
+        <v-carousel-item v-for="(slide, i) in images" :key="i" :src="slide.src">
+          <strong>
+            {{ slide.name }}
+          </strong>
+        </v-carousel-item>
+      </v-carousel>
+    </v-card>
 
-          <v-card-text> </v-card-text>
-        </v-layout>
-      </v-card>
-    </v-flex>
+    <!-- GoogleMaps carousel -->
 
-    <v-switch v-model="show" :label="klinikbewertungen"></v-switch>
+    <v-card elevation="24" width="750" class="mx-auto rounded-lg" v-if="!show">
+      <v-system-bar lights-out> </v-system-bar>
 
-    <v-card elevation="1" tile class=" my-12 rounded-lg " v-if="show">
+      <v-carousel
+        :continuous="true"
+        :show-arrows="true"
+        hide-delimiter-background
+        delimiter-icon="mdi-minus"
+        height="450"
+      >
+        <v-carousel-item
+          v-for="(img, i) in googleimages"
+          :key="i"
+          :src="img.src"
+        >
+          <strong class="font-weight-bold">
+            {{ img.name }}
+          </strong>
+        </v-carousel-item>
+      </v-carousel>
+    </v-card>
+
+    <!-- Switch button -->
+
+    <v-col cols="12" height="10">
+      <span class="red--text subtitle-1 mb-2">GoogleMaps</span>
+      <span class="green--text subtitle-1 mb-2">Klinikbewertungen.de</span>
+      <v-switch
+        v-model="show"
+        :label="Klinikbewertungen"
+        color="orange"
+      ></v-switch>
+    </v-col>
+
+    <!-- Klinikbewertungen data -->
+
+    <v-card elevation="10" tile class=" my-12 rounded-lg " v-if="show">
       <v-card-title>
         Kliniken
         <v-divider></v-divider>
@@ -53,10 +95,16 @@
         </template></v-data-table
       >
     </v-card>
-    <v-spacer></v-spacer>
-    <v-card v-if="!show">
+
+    <!-- GoogleMaps data -->
+
+    <v-card elevation="10" tile class=" my-12 rounded-lg " v-if="!show">
       <v-card-title>
         Kliniken
+        <v-divider></v-divider>
+        <span class="red--text subtitle-1 mb-2"
+          >{{ gjson.length }} Bewertungen gefunden</span
+        >
         <v-spacer></v-spacer>
         <v-text-field
           v-model="search"
@@ -138,6 +186,20 @@ export default {
           src: require('../images-klinikbewertungen/PositiveNegativeProJahr/PositiveNegativeProJahr_Herzogin Elisabeth Hospital.png'),
         },
       ],
+      googleimages: [
+        {
+          name: 'PolaritiyProJahr',
+          src: require('../images-google/PolaritiyProJahr/PolaritiyProJahr_Herzogin Elisabeth Hospital_google.png'),
+        },
+        {
+          name: 'KommentareProJahr ',
+          src: require('../images-google/KommentareProJahr/KommentareProJahr_Herzogin Elisabeth Hospital_google.png'),
+        },
+        {
+          name: 'PositiveNegativeProJahr ',
+          src: require('../images-google/PositiveNegativeProJahr/PositiveNegativeProJahr_Herzogin Elisabeth Hospital_google.png'),
+        },
+      ],
     };
   },
 
@@ -149,12 +211,11 @@ export default {
       else return 'red';
     },
     getFarbe(gesamt) {
-      if (gesamt === 'Sehr zufrieden') return 'green';
+      if (gesamt === 100) return 'green';
       else if (gesamt == 67) return 'blue';
       else if (gesamt == 33) return 'orange';
       else return 'red';
     },
-    handleSourceClick() {},
   },
 };
 </script>
