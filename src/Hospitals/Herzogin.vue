@@ -86,11 +86,6 @@
         :search="search"
         class="elevation-1 text-sm-center"
       >
-        <template v-slot:item.group="{ item }">
-          <v-chip :color="getColor(item.group)" dark>
-            {{ item.group }}
-          </v-chip>
-        </template>
         <template v-slot:item.gesamt="{ item }">
           <v-chip :color="getFarbe(item.gesamt)" dark>
             {{ item.gesamt }}
@@ -125,6 +120,11 @@
         :search="search"
         class="elevation-5 text-sm-center"
       >
+        <template v-slot:item.sterne="{ item }">
+          <v-chip :color="getColor(item.sterne)" dark>
+            {{ item.sterne }}
+          </v-chip>
+        </template>
       </v-data-table>
     </v-card>
   </v-layout>
@@ -207,17 +207,18 @@ export default {
   },
 
   methods: {
-    getColor(group) {
-      if (group == 4) return 'green';
-      else if (group == 3) return 'blue';
-      else if (group == 2) return 'orange';
-      else return 'red';
+    getColor(sterne) {
+      if (sterne === 5) return 'pink';
+      else if (sterne === 4) return 'blue';
+      else if (sterne === 3) return 'yellow';
+      else if (sterne === 2) return 'orange';
+      else if (sterne === 1) return 'green';
     },
     getFarbe(gesamt) {
-      if (gesamt === 100) return 'green';
-      else if (gesamt == 67) return 'blue';
-      else if (gesamt == 33) return 'orange';
-      else return 'red';
+      if (gesamt === 'sehr zufrieden') return 'green';
+      else if (gesamt === 'zufrieden') return 'red';
+      else if (gesamt === 'weniger zufrieden') return 'orange';
+      else if (gesamt === 'unzufrieden') return 'blue';
     },
   },
 };
