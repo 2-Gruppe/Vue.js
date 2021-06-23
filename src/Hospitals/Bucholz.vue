@@ -1,6 +1,6 @@
 <template lang="">
   <v-layout row wrap>
-    <v-img max-height="300" src="../assets/Hospitals/bucholz.jpg"></v-img>
+    <v-img max-height="250" src="../assets/Hospitals/bucholz.jpg"></v-img>
     <br />
     <!-- Klinikbewertungen carousel -->
 
@@ -48,13 +48,10 @@
     <!-- Switch button -->
 
     <v-col cols="12" height="10">
-      <span class="red--text subtitle-1 mb-2">GoogleMaps</span>
-      <span class="green--text subtitle-1 mb-2">Klinikbewertungen.de</span>
-      <v-switch
-        v-model="show"
-        :label="Klinikbewertungen"
-        color="orange"
-      ></v-switch>
+      <storng class="red--text subtitle-1 mb-2">GoogleMaps</storng
+      ><v-icon>mdi-sync </v-icon>
+      <strong class="green--text subtitle-1 mb-2">Klinikbewertungen.de</strong>
+      <v-switch v-model="show" color="orange"></v-switch>
     </v-col>
 
     <!-- Klinikbewertungen data -->
@@ -77,7 +74,7 @@
       </v-card-title>
       <v-data-table
         dense
-        :items-per-page="4"
+        :items-per-page="5"
         :headers="headers"
         :items="desserts"
         :search="search"
@@ -116,7 +113,7 @@
       </v-card-title>
       <v-data-table
         dense
-        :items-per-page="4"
+        :items-per-page="5"
         :headers="headgoogle"
         :items="google"
         :search="search"

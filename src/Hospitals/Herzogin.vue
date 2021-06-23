@@ -1,119 +1,127 @@
 <template lang="">
-  <v-container fluid>
-    <v-row class="mb-6" no-gutters>
-      <v-img max-height="300" src="../assets/Hospitals/herzogin.jpg"></v-img>
-    </v-row>
-    <span class="red--text subtitle-1 mb-2">Google</span>
-    <span class="green--text subtitle-1 mb-2">Klinikbewertungen</span>
+  <v-layout row wrap>
+    <v-img height="250" src="../assets/Hospitals/herzogin.jpg"></v-img>
+    <br />
+    <!-- Klinikbewertungen carousel -->
 
-    <v-switch
-      v-model="show"
-      :label="Klinikbewertungen"
-      color="orange"
-    ></v-switch>
-    <v-row class="mb-6" no-gutters>
-      <v-col cols="8" class="fill-height" height="400">
+    <v-card elevation="24" max-width="750" class="mx-auto my-12" v-if="show">
+      <v-system-bar lights-out> </v-system-bar>
+      <v-carousel
+        :continuous="true"
+        :show-arrows="true"
+        hide-delimiter-background
+        delimiter-icon="mdi-minus"
+        height="450"
+      >
+        <v-carousel-item v-for="(slide, i) in images" :key="i" :src="slide.src">
+          <strong>
+            {{ slide.name }}
+          </strong>
+        </v-carousel-item>
+      </v-carousel>
+    </v-card>
+
+    <!-- GoogleMaps carousel -->
+
+    <v-card elevation="24" max-width="750" class="mx-auto my-12" v-if="!show">
+      <v-system-bar lights-out> </v-system-bar>
+
+      <v-carousel
+        :continuous="true"
+        :show-arrows="true"
+        hide-delimiter-background
+        delimiter-icon="mdi-minus"
+        height="450"
+      >
+        <v-carousel-item
+          v-for="(img, i) in googleimages"
+          :key="i"
+          :src="img.src"
+        >
+          <strong class="font-weight-bold">
+            {{ img.name }}
+          </strong>
+        </v-carousel-item>
+      </v-carousel>
+    </v-card>
+
+    <!-- Switch button -->
+
+    <v-col cols="12" height="10">
+      <storng class="red--text subtitle-1 mb-2">GoogleMaps</storng
+      ><v-icon>mdi-sync </v-icon>
+      <strong class="green--text subtitle-1 mb-2">Klinikbewertungen.de</strong>
+      <v-switch v-model="show" color="orange"></v-switch>
+    </v-col>
+
+    <!-- Klinikbewertungen data -->
+
+    <v-card elevation="10" tile class=" my-12 rounded-lg " v-if="show">
+      <v-card-title>
+        Kliniken
+        <v-divider></v-divider>
+        <span class="red--text subtitle-1 mb-2"
+          >{{ kjson.length }} Bewertungen gefunden</span
+        >
         <v-spacer></v-spacer>
+        <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Search"
+          single-line
+          hide-details
+        ></v-text-field>
+      </v-card-title>
+      <v-data-table
+        dense
+        :items-per-page="5"
+        :headers="headers"
+        :items="desserts"
+        :search="search"
+        class="elevation-1 text-sm-center"
+      >
+        <template v-slot:item.group="{ item }">
+          <v-chip :color="getColor(item.group)" dark>
+            {{ item.group }}
+          </v-chip>
+        </template>
+        <template v-slot:item.gesamt="{ item }">
+          <v-chip :color="getFarbe(item.gesamt)" dark>
+            {{ item.gesamt }}
+          </v-chip>
+        </template></v-data-table
+      >
+    </v-card>
 
-        <v-card elevation="1" tile class=" my-12 rounded-lg " v-if="show">
-          <v-card-title>
-            Kliniken
-            <v-divider></v-divider>
-            <span class="red--text subtitle-1 mb-2"
-              >{{ kjson.length }} Bewertungen gefunden</span
-            >
-            <v-spacer></v-spacer>
-            <v-text-field
-              v-model="search"
-              append-icon="mdi-magnify"
-              label="Search"
-              single-line
-              hide-details
-            ></v-text-field>
-          </v-card-title>
-          <v-data-table
-            dense
-            :items-per-page="6"
-            :headers="headers"
-            :items="desserts"
-            :search="search"
-            class="elevation-1 text-sm-center"
-          >
-            <template v-slot:item.group="{ item }">
-              <v-chip :color="getColor(item.group)" dark>
-                {{ item.group }}
-              </v-chip>
-            </template>
-            <template v-slot:item.gesamt="{ item }">
-              <v-chip :color="getFarbe(item.gesamt)" dark>
-                {{ item.gesamt }}
-              </v-chip>
-            </template></v-data-table
-          >
-        </v-card>
+    <!-- GoogleMaps data -->
+
+    <v-card elevation="10" tile class=" my-12 rounded-lg " v-if="!show">
+      <v-card-title>
+        Kliniken
+        <v-divider></v-divider>
+        <span class="red--text subtitle-1 mb-2"
+          >{{ gjson.length }} Bewertungen gefunden</span
+        >
         <v-spacer></v-spacer>
-        <v-card v-if="!show">
-          <v-card-title>
-            Kliniken
-            <v-divider></v-divider>
-            <span class="red--text subtitle-1 mb-2"
-              >{{ gjson.length }} Bewertungen gefunden</span
-            >
-            <v-spacer></v-spacer>
-            <v-text-field
-              v-model="search"
-              append-icon="mdi-magnify"
-              label="Search"
-              single-line
-              hide-details
-            ></v-text-field>
-          </v-card-title>
-          <v-data-table
-            dense
-            :items-per-page="10"
-            :headers="headgoogle"
-            :items="google"
-            :search="search"
-            class="elevation-5 text-sm-center"
-          >
-          </v-data-table>
-        </v-card>
-      </v-col>
-      <v-divider></v-divider>
-      <v-col cols="4" v-if="show">
-        <v-flex xs12 sm6 md3 lg3 v-for="image in images" :key="image">
-          <v-card hover class="ma-4" min-height="400" min-width="400">
-            <v-layout column align-center fill-height class="text-center">
-              <v-img :src="image"></v-img>
-
-              <v-card-title class="font-weight-light">{{
-                image.name
-              }}</v-card-title>
-              <v-spacer></v-spacer>
-
-              <v-card-text> </v-card-text>
-            </v-layout>
-          </v-card>
-        </v-flex>
-      </v-col>
-      <v-col cols="4" v-if="!show">
-        <v-flex xs12 sm6 md3 lg3 v-for="img in googleimages" :key="img">
-          <v-card hover class="ma-4" min-height="400" min-width="400">
-            <v-layout column align-center fill-height class="text-center">
-              <v-img :src="img"></v-img>
-
-              <v-card-title class="font-weight-light">{{
-                img.name
-              }}</v-card-title>
-              <v-spacer></v-spacer>
-
-              <v-card-text> </v-card-text>
-            </v-layout>
-          </v-card>
-        </v-flex>
-      </v-col>
-    </v-row>
-  </v-container>
+        <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Search"
+          single-line
+          hide-details
+        ></v-text-field>
+      </v-card-title>
+      <v-data-table
+        dense
+        :items-per-page="5"
+        :headers="headgoogle"
+        :items="google"
+        :search="search"
+        class="elevation-5 text-sm-center"
+      >
+      </v-data-table>
+    </v-card>
+  </v-layout>
 </template>
 <script>
 import kjson from '../assets/Herzogin Elisabeth Hospital_klinikDe.json';

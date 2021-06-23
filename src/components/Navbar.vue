@@ -14,34 +14,38 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
+        icon
+        rounded
+        elevation="1"
         text
         small
-        color="grey darken-2"
-        min-width="150"
-        class="my-5 white--text"
+        color="black"
+        min-width="100"
+        class="my-5 mx-5 white--text"
         router
         to="/Carousel"
-        @click="show = !show"
       >
         <v-icon>mdi-home</v-icon>Home</v-btn
       >
 
       <!-- <v-spacer></v-spacer> -->
       <v-btn
+        elevation="1"
+        icon
+        rounded
         text
         small
-        color="grey darken-2"
-        min-width="150"
-        class="my-5 white--text"
+        color="black"
+        min-width="100"
+        class="my-5 mx-auto white--text"
         router
         to="/Cards"
-        @click="show = !show"
       >
         <v-icon>mdi-hospital-building</v-icon>Kliniken</v-btn
       >
     </v-app-bar>
 
-    <v-navigation-drawer app v-model="drawer" color="orange accent-2">
+    <v-navigation-drawer app v-model="drawer" color="grey darken-3">
       <v-layout column align-center>
         <v-flex class="my-5">
           <v-img max-width="100px" src="../assets/home.jpg"></v-img>
