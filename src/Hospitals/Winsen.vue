@@ -1,10 +1,20 @@
 <template lang="">
   <v-layout row wrap>
-    <v-img max-height="250" src="../assets/Hospitals/bucholz.jpg"></v-img>
+    <v-img height="250" src="../assets/Hospitals/Winsen.jpg"></v-img>
     <br />
     <!-- Klinikbewertungen carousel -->
 
-    <v-card elevation="24" width="750" class="mx-auto rounded-lg" v-if="show">
+    <v-card
+      elevation="24"
+      min-width="374"
+      max-width="750"
+      class="mx-auto my-12"
+      xs12
+      sm6
+      md4
+      lg3
+      v-if="show"
+    >
       <v-system-bar lights-out> </v-system-bar>
       <v-carousel
         :continuous="true"
@@ -13,7 +23,15 @@
         delimiter-icon="mdi-minus"
         height="450"
       >
-        <v-carousel-item v-for="(slide, i) in images" :key="i" :src="slide.src">
+        <v-carousel-item
+          xs12
+          sm6
+          md4
+          lg3
+          v-for="(slide, i) in images"
+          :key="i"
+          :src="slide.src"
+        >
           <strong>
             {{ slide.name }}
           </strong>
@@ -23,7 +41,17 @@
 
     <!-- GoogleMaps carousel -->
 
-    <v-card elevation="24" width="750" class="mx-auto rounded-lg" v-if="!show">
+    <v-card
+      elevation="24"
+      min-width="374"
+      max-width="750"
+      class="mx-auto my-12"
+      xs12
+      sm6
+      md4
+      lg3
+      v-if="!show"
+    >
       <v-system-bar lights-out> </v-system-bar>
 
       <v-carousel
@@ -62,11 +90,20 @@
 
     <!-- Klinikbewertungen data -->
 
-    <v-card elevation="10" tile class=" my-12 rounded-lg " v-if="show">
+    <v-card
+      elevation="10"
+      tile
+      class=" my-12 rounded-lg "
+      xs12
+      sm6
+      md4
+      lg3
+      v-if="show"
+    >
       <v-card-title>
         Kliniken
-        <v-divider></v-divider>
-        <span class="red--text subtitle-1 mb-2"
+
+        <span class="red--text subtitle-1  mx-7"
           >{{ kjson.length }} Bewertungen gefunden</span
         >
         <v-spacer></v-spacer>
@@ -86,11 +123,6 @@
         :search="search"
         class="elevation-1 text-sm-center"
       >
-        <template v-slot:item.group="{ item }">
-          <v-chip :color="getColor(item.group)" dark>
-            {{ item.group }}
-          </v-chip>
-        </template>
         <template v-slot:item.gesamt="{ item }">
           <v-chip :color="getFarbe(item.gesamt)" dark>
             {{ item.gesamt }}
@@ -101,11 +133,20 @@
 
     <!-- GoogleMaps data -->
 
-    <v-card elevation="10" tile class=" my-12 rounded-lg " v-if="!show">
+    <v-card
+      elevation="10"
+      xs12
+      sm6
+      md4
+      lg3
+      tile
+      class=" my-12 rounded-lg "
+      v-if="!show"
+    >
       <v-card-title>
         Kliniken
-        <v-divider></v-divider>
-        <span class="red--text subtitle-1 mb-2"
+
+        <span class="red--text subtitle-1  mx-7"
           >{{ gjson.length }} Bewertungen gefunden</span
         >
         <v-spacer></v-spacer>
@@ -125,13 +166,18 @@
         :search="search"
         class="elevation-5 text-sm-center"
       >
+        <template v-slot:item.sterne="{ item }">
+          <v-chip :color="getColor(item.sterne)" dark>
+            {{ item.sterne }}
+          </v-chip>
+        </template>
       </v-data-table>
     </v-card>
   </v-layout>
 </template>
 <script>
-import kjson from '../assets/Herzogin Elisabeth Hospital_klinikDe.json';
-import gjson from '../assets/Herzogin Elisabeth Hospital_googleMaps.json';
+import kjson from '../assets/klinik by klinik json/Krankenhaus Winsen_klinikDe.json';
+import gjson from '../assets/klinik by klinik json/Krankenhaus Winsen_googleMaps.json';
 
 export default {
   data() {
@@ -165,7 +211,7 @@ export default {
         },
 
         { text: 'komment', value: 'komment' },
-        { text: 'gesamt', value: 'gesamt' },
+        { text: 'sterne', value: 'sterne' },
         { text: 'positive', value: 'positive' },
         { text: 'source', value: 'source' },
       ],
@@ -174,50 +220,51 @@ export default {
       images: [
         {
           name: 'FachbereichPolarities ',
-          src: require('../images-klinikbewertungen/FachbereichPolarities/FachbereichPolarities_Herzogin Elisabeth Hospital.png'),
+          src: require('../images-klinikbewertungen/FachbereichPolarities/FachbereichPolarities_Krankenhaus Winsen.png'),
         },
         {
           name: 'PolaritiyProJahr',
-          src: require('../images-klinikbewertungen/PolaritiyProJahr/PolaritiyProJahr_Herzogin Elisabeth Hospital.png'),
+          src: require('../images-klinikbewertungen/PolaritiyProJahr/PolaritiyProJahr_Krankenhaus Winsen.png'),
         },
         {
           name: 'KommentareProJahr ',
-          src: require('../images-klinikbewertungen/KommentareProJahr/KommentareProJahr_Herzogin Elisabeth Hospital.png'),
+          src: require('../images-klinikbewertungen/KommentareProJahr/KommentareProJahr_Krankenhaus Winsen.png'),
         },
         {
           name: 'PositiveNegativeProJahr ',
-          src: require('../images-klinikbewertungen/PositiveNegativeProJahr/PositiveNegativeProJahr_Herzogin Elisabeth Hospital.png'),
+          src: require('../images-klinikbewertungen/PositiveNegativeProJahr/PositiveNegativeProJahr_Krankenhaus Winsen.png'),
         },
       ],
       googleimages: [
         {
           name: 'PolaritiyProJahr',
-          src: require('../images-google/PolaritiyProJahr/PolaritiyProJahr_Herzogin Elisabeth Hospital_google.png'),
+          src: require('../images-google/PolaritiyProJahr/PolaritiyProJahr_Krankenhaus Winsen_google.png'),
         },
         {
           name: 'KommentareProJahr ',
-          src: require('../images-google/KommentareProJahr/KommentareProJahr_Herzogin Elisabeth Hospital_google.png'),
+          src: require('../images-google/KommentareProJahr/KommentareProJahr_Krankenhaus Winsen_google.png'),
         },
         {
           name: 'PositiveNegativeProJahr ',
-          src: require('../images-google/PositiveNegativeProJahr/PositiveNegativeProJahr_Herzogin Elisabeth Hospital_google.png'),
+          src: require('../images-google/PositiveNegativeProJahr/PositiveNegativeProJahr_Krankenhaus Winsen_google.png'),
         },
       ],
     };
   },
 
   methods: {
-    getColor(group) {
-      if (group == 4) return 'green';
-      else if (group == 3) return 'blue';
-      else if (group == 2) return 'orange';
-      else return 'red';
+    getColor(sterne) {
+      if (sterne === 5) return 'pink';
+      else if (sterne === 4) return 'blue';
+      else if (sterne === 3) return 'yellow';
+      else if (sterne === 2) return 'orange';
+      else if (sterne === 1) return 'green';
     },
     getFarbe(gesamt) {
-      if (gesamt === 100) return 'green';
-      else if (gesamt == 67) return 'blue';
-      else if (gesamt == 33) return 'orange';
-      else return 'red';
+      if (gesamt === 'sehr zufrieden') return 'green';
+      else if (gesamt === 'zufrieden') return 'red';
+      else if (gesamt === 'weniger zufrieden') return 'orange';
+      else if (gesamt === 'unzufrieden') return 'blue';
     },
   },
 };

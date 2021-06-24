@@ -103,7 +103,7 @@ export default {
           sterne: 1,
           review: 444,
           src: require('../assets/Hospitals/eilenriedeklinik.jpg'),
-          route: '/Eilenriede',
+          route: '/Ellenriede',
         },
         {
           name: 'Sophienklinik',

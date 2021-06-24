@@ -48,7 +48,7 @@
     <v-navigation-drawer app v-model="drawer" color="grey darken-3">
       <v-layout column align-center>
         <v-flex class="my-5">
-          <v-img max-width="100px" src="../assets/home.jpg"></v-img>
+          <v-img max-width="100px" src="../assets/key-2114046_1280.jpg"></v-img>
         </v-flex>
       </v-layout>
 

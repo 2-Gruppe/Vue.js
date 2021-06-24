@@ -4,7 +4,17 @@
     <br />
     <!-- Klinikbewertungen carousel -->
 
-    <v-card elevation="24" max-width="750" class="mx-auto my-12" v-if="show">
+    <v-card
+      elevation="24"
+      min-width="374"
+      max-width="750"
+      class="mx-auto my-12"
+      xs12
+      sm6
+      md4
+      lg3
+      v-if="show"
+    >
       <v-system-bar lights-out> </v-system-bar>
       <v-carousel
         :continuous="true"
@@ -13,7 +23,15 @@
         delimiter-icon="mdi-minus"
         height="450"
       >
-        <v-carousel-item v-for="(slide, i) in images" :key="i" :src="slide.src">
+        <v-carousel-item
+          xs12
+          sm6
+          md4
+          lg3
+          v-for="(slide, i) in images"
+          :key="i"
+          :src="slide.src"
+        >
           <strong>
             {{ slide.name }}
           </strong>
@@ -23,7 +41,17 @@
 
     <!-- GoogleMaps carousel -->
 
-    <v-card elevation="24" max-width="750" class="mx-auto my-12" v-if="!show">
+    <v-card
+      elevation="24"
+      min-width="374"
+      max-width="750"
+      class="mx-auto my-12"
+      xs12
+      sm6
+      md4
+      lg3
+      v-if="!show"
+    >
       <v-system-bar lights-out> </v-system-bar>
 
       <v-carousel
@@ -62,11 +90,20 @@
 
     <!-- Klinikbewertungen data -->
 
-    <v-card elevation="10" tile class=" my-12 rounded-lg " v-if="show">
+    <v-card
+      elevation="10"
+      tile
+      class=" my-12 rounded-lg "
+      xs12
+      sm6
+      md4
+      lg3
+      v-if="show"
+    >
       <v-card-title>
         Kliniken
-        <v-divider></v-divider>
-        <span class="red--text subtitle-1 mb-2"
+
+        <span class="red--text subtitle-1  mx-7"
           >{{ kjson.length }} Bewertungen gefunden</span
         >
         <v-spacer></v-spacer>
@@ -96,11 +133,20 @@
 
     <!-- GoogleMaps data -->
 
-    <v-card elevation="10" tile class=" my-12 rounded-lg " v-if="!show">
+    <v-card
+      elevation="10"
+      xs12
+      sm6
+      md4
+      lg3
+      tile
+      class=" my-12 rounded-lg "
+      v-if="!show"
+    >
       <v-card-title>
         Kliniken
-        <v-divider></v-divider>
-        <span class="red--text subtitle-1 mb-2"
+
+        <span class="red--text subtitle-1  mx-7"
           >{{ gjson.length }} Bewertungen gefunden</span
         >
         <v-spacer></v-spacer>
