@@ -1,6 +1,6 @@
 <template lang="">
   <nav>
-    <v-app-bar color="grey lighten-1" dark flat padless fixed dense>
+    <v-app-bar color="grey lighten-1" elevation="1" dark dense fixed>
       <v-app-bar-nav-icon id="drawerIcon" @click="drawer = !drawer">
       </v-app-bar-nav-icon>
       <img class="mr-3" :src="require('../assets/analytics.png')" height="35" />
@@ -50,12 +50,7 @@
       >
     </v-app-bar>
 
-    <v-navigation-drawer
-      app
-      v-model="drawer"
-      @click="drawer = !drawer"
-      color="grey darken-3"
-    >
+    <v-navigation-drawer app v-model="drawer" color="grey darken-3">
       <v-layout column align-center>
         <v-flex class="my-5">
           <v-img
@@ -97,29 +92,21 @@ export default {
       source: 'https://fahricigdem.github.io/klinikbewertungen-react/',
       links: [
         { icon: 'mdi-home', text: 'Home', route: '/' },
+
         {
-          icon: 'mdi-information-variant',
-          text: 'Alle Daten',
-          route: '/Data',
-        },
-        {
-          icon: 'mdi-trophy',
-          text: 'Top Rated ',
+          icon: 'mdi-forum',
+          text: 'Kontakt ',
           route: '/top-rated-movies',
         },
         {
-          icon: 'mdi-television-classic',
-          text: 'Popular',
+          icon: 'mdi-account-supervisor ',
+          text: 'Über Uns',
           route: '/popular-shows',
         },
+
         {
-          icon: 'mdi-medal',
-          text: 'Top Rated ',
-          route: '/top-rated-shows',
-        },
-        {
-          icon: 'mdi-information',
-          text: 'Über Uns',
+          icon: 'mdi-forum',
+          text: 'Beste Kliniken',
           route: '/Uberuns',
         },
       ],

@@ -39,7 +39,17 @@
 
     <!-- GoogleMaps carousel -->
 
-    <v-card elevation="24" class="mx-auto my-12" xs12 sm6 md4 lg3 v-if="!show">
+    <v-card
+      elevation="24"
+      min-width="374"
+      max-width="750"
+      class="mx-auto my-6"
+      xs12
+      sm6
+      md4
+      lg3
+      v-if="!show"
+    >
       <v-system-bar lights-out> </v-system-bar>
 
       <v-carousel
@@ -81,7 +91,7 @@
     <v-card
       elevation="10"
       tile
-      class=" my-12 rounded-lg "
+      class=" my-12 rounded-lg  "
       xs12
       sm6
       md4
@@ -109,7 +119,7 @@
         :headers="headers"
         :items="klinikdaten"
         :search="search"
-        class="elevation-1 text-sm-center"
+        class="elevation-1 text-sm-center "
       >
         <template v-slot:item.gesamt="{ item }">
           <v-chip :color="getFarbe(item.gesamt)" dark>
@@ -152,7 +162,7 @@
         :headers="headgoogle"
         :items="google"
         :search="search"
-        class="elevation-5 text-sm-center"
+        class="elevation-5 text-sm-center "
       >
         <template v-slot:item.sterne="{ item }">
           <v-chip :color="getColor(item.sterne)" dark>
@@ -179,21 +189,22 @@ export default {
       headers: [
         {
           text: 'Kliniken',
-          align: 'start',
+          align: 'center',
           sortable: true,
           value: 'name',
         },
-        { text: 'titel', value: 'titel' },
-        { text: 'komment', value: 'komment' },
-        { text: 'gesamt', value: 'gesamt' },
-        { text: 'positive', value: 'positive' },
-        { text: 'source', value: 'source' },
+        { text: 'Titel', value: 'titel' },
+        { text: 'Komment', value: 'komment', align: 'start' },
+        { text: 'Gesamt', value: 'gesamt' },
+        { text: 'Positive', value: 'positive' },
+        { text: 'Source', value: 'source' },
       ],
       klinikdaten: kjson,
+
       headgoogle: [
         {
           text: 'Kliniken',
-          align: 'start',
+          align: 'center',
           sortable: true,
           value: 'name',
         },
@@ -257,4 +268,4 @@ export default {
   },
 };
 </script>
-<style lang=""></style>
+<style scoped></style>

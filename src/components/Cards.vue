@@ -6,7 +6,7 @@
         sm6
         md4
         lg3
-        hover
+        expand-on-hover
         v-for="n in KlinikDaten"
         :key="n"
         elevation="10"
@@ -35,11 +35,9 @@
 
           <div
             class="my-4 text-subtitle-2 font-weight-thin orange--text text--accent-4"
-          >
-            Durchschnittliche Sterne Bewertung
-          </div>
+          ></div>
 
-          <q>
+          <q class="mb-2">
             Wer nicht jeden Tag etwas für seine Gesundheit tut, der muss eines
             Tages sehr viel Zeit für die Krankheit aufbringen.</q
           >
