@@ -39,16 +39,13 @@
             Durchschnittliche Sterne Bewertung
           </div>
 
-          <div>
-            "Wer nicht jeden Tag etwas für seine Gesundheit tut, der muss eines
-            Tages sehr viel Zeit für die Krankheit aufbringen."
-
-            <div
-              class=" text-subtitle-2 font-weight-thin grey--text text--darken-4"
-            >
-              Rothkirch, Michael
-            </div>
-          </div>
+          <q>
+            Wer nicht jeden Tag etwas für seine Gesundheit tut, der muss eines
+            Tages sehr viel Zeit für die Krankheit aufbringen.</q
+          >
+          <p class=" text-subtitle-2 grey--text  ">
+            Rothkirch, Michael
+          </p>
         </v-card-text>
         <v-card-actions>
           <v-btn block color="orange lighten-1" elevation="10" :to="n.route">

@@ -3,7 +3,7 @@
     <v-app-bar color="grey lighten-1" dark flat padless fixed dense>
       <v-app-bar-nav-icon id="drawerIcon" @click="drawer = !drawer">
       </v-app-bar-nav-icon>
-      <img class="mr-3" :src="require('../assets/analytics.png')" height="40" />
+      <img class="mr-3" :src="require('../assets/analytics.png')" height="35" />
       <v-toolbar-title class=" white--text">
         <span class="font-weight-light">Team</span>
         <strong>HFH</strong>
@@ -50,7 +50,12 @@
       >
     </v-app-bar>
 
-    <v-navigation-drawer app v-model="drawer" color="grey darken-3">
+    <v-navigation-drawer
+      app
+      v-model="drawer"
+      @click="drawer = !drawer"
+      color="grey darken-3"
+    >
       <v-layout column align-center>
         <v-flex class="my-5">
           <v-img
