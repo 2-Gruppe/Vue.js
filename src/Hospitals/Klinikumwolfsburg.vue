@@ -1,11 +1,5 @@
 <template lang="">
   <v-layout row wrap>
-    <v-img
-      height="250"
-      fill-height
-      src="../assets/Hospitals/klinikumwolfsburg.jpg"
-    ></v-img>
-    <br />
     <!-- Klinikbewertungen carousel -->
 
     <v-card
@@ -88,7 +82,7 @@
         class=" mx-2 "
         v-model="show"
         color="grey lighten-1"
-        label="Source auswahlen"
+        label="Source auswählen"
       ></v-switch>
     </v-col>
 
@@ -123,7 +117,7 @@
         dense
         :items-per-page="5"
         :headers="headers"
-        :items="desserts"
+        :items="klinikdaten"
         :search="search"
         class="elevation-1 text-sm-center"
       >
@@ -205,7 +199,7 @@ export default {
         { text: 'positive', value: 'positive' },
         { text: 'source', value: 'source' },
       ],
-      desserts: kjson,
+      klinikdaten: kjson,
       headgoogle: [
         {
           text: 'Kliniken',
@@ -258,17 +252,17 @@ export default {
 
   methods: {
     getColor(sterne) {
-      if (sterne === 5) return 'pink';
-      else if (sterne === 4) return 'blue';
-      else if (sterne === 3) return 'yellow';
-      else if (sterne === 2) return 'orange';
-      else if (sterne === 1) return 'green';
+      if (sterne === 5) return 'success';
+      else if (sterne === 4) return 'primary';
+      else if (sterne === 3) return 'warning';
+      else if (sterne === 2) return 'yellow';
+      else if (sterne === 1) return 'error';
     },
     getFarbe(gesamt) {
-      if (gesamt === 'sehr zufrieden') return 'green';
-      else if (gesamt === 'zufrieden') return 'red';
-      else if (gesamt === 'weniger zufrieden') return 'orange';
-      else if (gesamt === 'unzufrieden') return 'blue';
+      if (gesamt === 'sehr zufrieden') return 'success';
+      else if (gesamt === 'zufrieden') return 'primary';
+      else if (gesamt === 'weniger zufrieden') return 'warning';
+      else if (gesamt === 'unzufrieden') return 'error';
     },
   },
 };

@@ -1,13 +1,9 @@
 <template lang="">
   <nav>
     <v-app-bar color="grey lighten-1" dark flat padless fixed dense>
-      <v-app-bar-nav-icon
-        id="drawerIcon"
-        @click="drawer = !drawer"
-      ></v-app-bar-nav-icon>
-      <v-icon size="24px">
-        mdi-code-json
-      </v-icon>
+      <v-app-bar-nav-icon id="drawerIcon" @click="drawer = !drawer">
+      </v-app-bar-nav-icon>
+      <img class="mr-3" :src="require('../assets/analytics.png')" height="40" />
       <v-toolbar-title class=" white--text">
         <span class="font-weight-light">Team</span>
         <strong>HFH</strong>
@@ -28,7 +24,6 @@
         <v-icon>mdi-home</v-icon>Home</v-btn
       >
 
-      <!-- <v-spacer></v-spacer> -->
       <v-btn
         elevation="1"
         icon
@@ -43,12 +38,26 @@
       >
         <v-icon>mdi-hospital-building</v-icon>Kliniken</v-btn
       >
+      <v-btn
+        elevation="1"
+        rounded
+        small
+        color="error"
+        min-width="100"
+        class="my-5 ml-3 white--text"
+        href="https://fahricigdem.github.io/klinikbewertungen-react/"
+        >Für die Experten</v-btn
+      >
     </v-app-bar>
 
     <v-navigation-drawer app v-model="drawer" color="grey darken-3">
       <v-layout column align-center>
         <v-flex class="my-5">
-          <v-img max-width="100px" src="../assets/key-2114046_1280.jpg"></v-img>
+          <v-img
+            max-width="100px"
+            class="my-5"
+            src="../assets/analytics.png"
+          ></v-img>
         </v-flex>
       </v-layout>
 
@@ -80,6 +89,7 @@ export default {
     return {
       drawer: false,
       group: null,
+      source: 'https://fahricigdem.github.io/klinikbewertungen-react/',
       links: [
         { icon: 'mdi-home', text: 'Home', route: '/' },
         {

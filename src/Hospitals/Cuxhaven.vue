@@ -1,17 +1,12 @@
 <template lang="">
   <v-layout row wrap>
-    <v-img
-      height="250"
-      src="../assets/Hospitals/HELIOS Klinik Cuxhaven.jpg"
-    ></v-img>
-    <br />
     <!-- Klinikbewertungen carousel -->
 
     <v-card
       elevation="24"
       min-width="374"
       max-width="750"
-      class="mx-auto my-12"
+      class="mx-auto  my-12"
       xs12
       sm6
       md4
@@ -77,7 +72,6 @@
     </v-card>
 
     <!-- Switch button -->
-
     <v-col cols="12">
       <storng v-if="!show" class="red--text mx-2 mb-2">GoogleMaps</storng>
       <strong v-if="show" class="green--text mx-2 mb-2"
@@ -87,7 +81,7 @@
         class=" mx-2 "
         v-model="show"
         color="grey lighten-1"
-        label="Source auswahlen"
+        label="Source auswählen"
       ></v-switch>
     </v-col>
 
@@ -96,7 +90,7 @@
     <v-card
       elevation="10"
       tile
-      class=" my-12 rounded-lg "
+      class=" my-1 rounded-lg "
       xs12
       sm6
       md4
@@ -122,7 +116,7 @@
         dense
         :items-per-page="5"
         :headers="headers"
-        :items="desserts"
+        :items="klinikdaten"
         :search="search"
         class="elevation-1 text-sm-center"
       >
@@ -143,7 +137,7 @@
       md4
       lg3
       tile
-      class=" my-12 rounded-lg "
+      class=" my-1 rounded-lg "
       v-if="!show"
     >
       <v-card-title>
@@ -199,12 +193,14 @@ export default {
           value: 'name',
         },
         { text: 'titel', value: 'titel' },
+        // { text: 'fachbereich', value: 'fachbereich' },
+
         { text: 'komment', value: 'komment' },
         { text: 'gesamt', value: 'gesamt' },
         { text: 'positive', value: 'positive' },
         { text: 'source', value: 'source' },
       ],
-      desserts: kjson,
+      klinikdaten: kjson,
       headgoogle: [
         {
           text: 'Kliniken',
@@ -257,17 +253,17 @@ export default {
 
   methods: {
     getColor(sterne) {
-      if (sterne === 5) return 'pink';
-      else if (sterne === 4) return 'blue';
-      else if (sterne === 3) return 'yellow';
-      else if (sterne === 2) return 'orange';
-      else if (sterne === 1) return 'green';
+      if (sterne === 5) return 'success';
+      else if (sterne === 4) return 'primary';
+      else if (sterne === 3) return 'warning';
+      else if (sterne === 2) return 'yellow';
+      else if (sterne === 1) return 'error';
     },
     getFarbe(gesamt) {
-      if (gesamt === 'sehr zufrieden') return 'green';
-      else if (gesamt === 'zufrieden') return 'red';
-      else if (gesamt === 'weniger zufrieden') return 'orange';
-      else if (gesamt === 'unzufrieden') return 'blue';
+      if (gesamt === 'sehr zufrieden') return 'success';
+      else if (gesamt === 'zufrieden') return 'primary';
+      else if (gesamt === 'weniger zufrieden') return 'warning';
+      else if (gesamt === 'unzufrieden') return 'error';
     },
   },
 };

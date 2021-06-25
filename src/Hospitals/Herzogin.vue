@@ -1,6 +1,5 @@
 <template lang="">
-  <v-layout row wrap>
-    <v-img height="250" src="../assets/Hospitals/herzogin.jpg"></v-img>
+  <v-layout row>
     <br />
     <!-- Klinikbewertungen carousel -->
 
@@ -8,14 +7,13 @@
       elevation="24"
       min-width="374"
       max-width="750"
-      class="mx-auto my-12"
+      class="mx-auto my-6"
       xs12
       sm6
       md4
       lg3
       v-if="show"
     >
-      <v-system-bar lights-out> </v-system-bar>
       <v-carousel
         :continuous="true"
         :show-arrows="true"
@@ -41,17 +39,7 @@
 
     <!-- GoogleMaps carousel -->
 
-    <v-card
-      elevation="24"
-      min-width="374"
-      max-width="750"
-      class="mx-auto my-12"
-      xs12
-      sm6
-      md4
-      lg3
-      v-if="!show"
-    >
+    <v-card elevation="24" class="mx-auto my-12" xs12 sm6 md4 lg3 v-if="!show">
       <v-system-bar lights-out> </v-system-bar>
 
       <v-carousel
@@ -84,7 +72,7 @@
         class=" mx-2 "
         v-model="show"
         color="grey lighten-1"
-        label="Source auswahlen"
+        label="Source auswählen"
       ></v-switch>
     </v-col>
 
@@ -119,7 +107,7 @@
         dense
         :items-per-page="5"
         :headers="headers"
-        :items="desserts"
+        :items="klinikdaten"
         :search="search"
         class="elevation-1 text-sm-center"
       >
@@ -176,8 +164,8 @@
   </v-layout>
 </template>
 <script>
-import kjson from '../assets/Herzogin Elisabeth Hospital_klinikDe.json';
-import gjson from '../assets/Herzogin Elisabeth Hospital_googleMaps.json';
+import kjson from '../assets/klinik by klinik json/Herzogin Elisabeth Hospital_klinikDe.json';
+import gjson from '../assets/klinik by klinik json/Herzogin Elisabeth Hospital_googleMaps.json';
 
 export default {
   data() {
@@ -201,7 +189,7 @@ export default {
         { text: 'positive', value: 'positive' },
         { text: 'source', value: 'source' },
       ],
-      desserts: kjson,
+      klinikdaten: kjson,
       headgoogle: [
         {
           text: 'Kliniken',
@@ -254,17 +242,17 @@ export default {
 
   methods: {
     getColor(sterne) {
-      if (sterne === 5) return 'pink';
-      else if (sterne === 4) return 'blue';
-      else if (sterne === 3) return 'yellow';
-      else if (sterne === 2) return 'orange';
-      else if (sterne === 1) return 'green';
+      if (sterne === 5) return 'success';
+      else if (sterne === 4) return 'primary';
+      else if (sterne === 3) return 'warning';
+      else if (sterne === 2) return 'yellow';
+      else if (sterne === 1) return 'error';
     },
     getFarbe(gesamt) {
-      if (gesamt === 'sehr zufrieden') return 'green';
-      else if (gesamt === 'zufrieden') return 'red';
-      else if (gesamt === 'weniger zufrieden') return 'orange';
-      else if (gesamt === 'unzufrieden') return 'blue';
+      if (gesamt === 'sehr zufrieden') return 'success';
+      else if (gesamt === 'zufrieden') return 'primary';
+      else if (gesamt === 'weniger zufrieden') return 'warning';
+      else if (gesamt === 'unzufrieden') return 'error';
     },
   },
 };
