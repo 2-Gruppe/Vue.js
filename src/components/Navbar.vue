@@ -51,15 +51,13 @@
     </v-app-bar>
 
     <v-navigation-drawer app v-model="drawer" color="grey darken-3">
-      <v-layout column align-center>
-        <v-flex class="my-5">
-          <v-img
-            max-width="100px"
-            class="my-5"
-            src="../assets/analytics.png"
-          ></v-img>
-        </v-flex>
-      </v-layout>
+      <v-flex class="my-5">
+        <v-img
+          max-width="100px"
+          class="my-5"
+          src="../assets/analytics.png"
+        ></v-img>
+      </v-flex>
 
       <v-list flat>
         <v-list-item
