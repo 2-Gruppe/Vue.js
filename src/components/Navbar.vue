@@ -1,6 +1,6 @@
 <template lang="">
   <nav>
-    <v-app-bar color="grey lighten-1" elevation="1" dark dense fixed>
+    <v-app-bar color="grey lighten-1" elevation="1" dark app flat>
       <v-app-bar-nav-icon id="drawerIcon" @click="drawer = !drawer">
       </v-app-bar-nav-icon>
       <img class="mr-3" :src="require('../assets/analytics.png')" height="35" />
@@ -9,6 +9,7 @@
         <strong>HFH</strong>
       </v-toolbar-title>
       <v-spacer></v-spacer>
+
       <v-btn
         icon
         rounded
@@ -51,13 +52,16 @@
     </v-app-bar>
 
     <v-navigation-drawer app v-model="drawer" color="grey darken-3">
-      <v-flex class="my-5">
-        <v-img
-          max-width="100px"
-          class="my-5"
-          src="../assets/analytics.png"
-        ></v-img>
-      </v-flex>
+      <v-layout column align-center>
+        <v-flex class="my-5">
+          <v-img
+            align-center
+            max-width="100px"
+            class="my-5"
+            src="../assets/analytics.png"
+          ></v-img>
+        </v-flex>
+      </v-layout>
 
       <v-list flat>
         <v-list-item
@@ -86,7 +90,7 @@ export default {
   data: function() {
     return {
       drawer: false,
-      group: null,
+
       source: 'https://fahricigdem.github.io/klinikbewertungen-react/',
       links: [
         { icon: 'mdi-home', text: 'Home', route: '/' },

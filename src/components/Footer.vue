@@ -1,10 +1,11 @@
 <template lang="">
-  <v-footer dark padless>
-    <v-card class="flex" flat tile>
-      <v-card-title class="grey lighten-1" dark>
-        <strong class="subheading"
-          >Get connected with us on social networks!</strong
-        >
+  <v-footer color="success darken-4" elevation="1" height="60" padless>
+    <v-card class="flex">
+      <v-card-title class="grey lighten-1 " elevation="1" dark>
+        <p class="overline ">
+          TEAM HFH - {{ new Date().getFullYear() }}
+          Get connected with us on social networks!
+        </p>
 
         <v-spacer></v-spacer>
 
@@ -14,29 +15,14 @@
           </v-icon>
         </v-btn>
       </v-card-title>
-
-      <v-card-text class="py-2 white--text text-center" height="10">
-        {{ new Date().getFullYear() }} —
-        <strong class="buchstabe white--text"
-          >TEAM <span class="buchstabe white--text">H</span
-          ><span class="buchstabe white--text">F</span
-          ><span class="buchstabe white--text">H</span></strong
-        >
-      </v-card-text>
     </v-card>
   </v-footer>
 </template>
 <script>
 export default {
-  name: 'Footer',
-
   data: () => ({
     icons: ['mdi-twitter', 'mdi-linkedin', 'mdi-instagram', 'mdi-github'],
   }),
 };
 </script>
-<style scoped>
-.buchstabe {
-  color: orange;
-}
-</style>
+<style scoped></style>

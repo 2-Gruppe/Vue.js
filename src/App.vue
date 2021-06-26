@@ -1,14 +1,11 @@
 <template lang="">
   <v-app>
     <Navbar />
-    <br />
-    <br />
 
     <v-content>
       <router-view></router-view>
       <router-view name="Cards"></router-view>
     </v-content>
-
     <Footer />
   </v-app>
 </template>

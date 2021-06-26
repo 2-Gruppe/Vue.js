@@ -11,7 +11,7 @@
         :key="n"
         elevation="10"
         tile
-        class="mx-auto my-12 rounded-lg "
+        class=" mx-auto my-12 rounded-lg "
         max-width="374"
         :to="n.route"
       >
@@ -189,3 +189,4 @@ export default {
   },
 };
 </script>
+<style scoped></style>

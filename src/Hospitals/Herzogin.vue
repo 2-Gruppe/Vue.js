@@ -4,6 +4,7 @@
     <!-- Klinikbewertungen carousel -->
 
     <v-card
+      fill-height
       elevation="24"
       min-width="374"
       max-width="750"
@@ -268,4 +269,3 @@ export default {
   },
 };
 </script>
-<style scoped></style>
