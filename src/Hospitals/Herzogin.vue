@@ -11,7 +11,7 @@
       class="mx-auto my-6"
       xs12
       sm6
-      md4
+      md6
       lg3
       v-if="show"
     >
@@ -74,7 +74,7 @@
 
     <!-- Switch button -->
 
-    <v-col cols="12">
+    <v-col cols="12" class="mt-0">
       <storng v-if="!show" class="red--text mx-2 mb-2">GoogleMaps</storng>
       <strong v-if="show" class="green--text mx-2 mb-2"
         >Klinikbewertungen.de</strong

@@ -19,6 +19,7 @@ import Herzogin from './Hospitals/Herzogin.vue';
 import Carousel from './components/Carousel.vue';
 import Uberuns from './components/Uberuns.vue';
 import Cards from './components/Cards.vue';
+import Kontakt from './components/Kontakt.vue';
 
 export const routes = [
   {
@@ -29,6 +30,7 @@ export const routes = [
     },
   },
   { path: '/Carousel', component: Carousel },
+  { path: '/Kontakt', component: Kontakt },
   { path: '/Cards', component: Cards },
   { path: '/Bucholz', component: Bucholz },
   { path: '/Cuxhaven', component: Cuxhaven },

@@ -1,11 +1,16 @@
 <template lang="">
-  <v-footer color="success darken-4" elevation="1" height="60" padless>
-    <v-card class="flex">
-      <v-card-title class="grey lighten-1 " elevation="1" dark>
-        <p class="overline ">
-          TEAM HFH - {{ new Date().getFullYear() }}
-          Get connected with us on social networks!
-        </p>
+  <v-footer elevation="1" height="60" padless>
+    <v-card class="flex" dark>
+      <v-card-title class="grey lighten-1 " elevation="1">
+        <img
+          class="mr-3"
+          :src="require('../assets/analytics.png')"
+          height="40"
+        />
+        <h6 class="text-subtitle-1 mt-2 text-white font-weight-light ">
+          &copy; {{ new Date().getFullYear() }} Team HFH, Verbinden Sie sich mit
+          uns in sozialen Netzwerken!
+        </h6>
 
         <v-spacer></v-spacer>
 
