@@ -1,23 +1,19 @@
 <template lang="">
-  <v-container dense>
+  <v-container>
     <v-row>
       <!-- Klinikbewertungen carousel -->
       <v-col cols="9">
-        <v-card
-          width="100%"
-          fill-height
-          elevation="24"
-          class="mx-auto my-3"
-          v-if="show"
-        >
+        <v-card fill-height elevation="24" class="mx-auto my-3" v-if="show">
           <v-carousel
             :continuous="true"
             :show-arrows="true"
             hide-delimiter-background
             delimiter-icon="mdi-minus"
-            height="380"
+            height="430"
           >
             <v-carousel-item
+              aspect-ratio="2"
+              contain
               v-for="(slide, i) in images"
               :key="i"
               :src="slide.src"
@@ -31,8 +27,9 @@
       </v-col>
       <!-- Switch button -->
 
-      <v-col cols="3" class="mt-0">
+      <v-col cols="3" class="my-4">
         <v-switch
+          contain
           v-if="show"
           class=" mx-2 "
           v-model="show"
@@ -49,9 +46,8 @@
     <v-row>
       <v-col cols="9">
         <v-card
-          fill-height
           elevation="24"
-          class="mx-auto my-3"
+          class="mx-auto my-1"
           xs12
           sm6
           md6
@@ -63,9 +59,11 @@
             :show-arrows="true"
             hide-delimiter-background
             delimiter-icon="mdi-minus"
-            height="380"
+            height="440"
           >
             <v-carousel-item
+              contain
+              aspect-ratio="2"
               xs12
               sm6
               md4
@@ -82,8 +80,9 @@
         </v-card>
       </v-col>
       <!-- Switch button -->
-      <v-col cols="3" class="mt-0">
+      <v-col cols="3" class="my-4">
         <v-switch
+          contain
           label="Quelle auswählen"
           v-if="!show"
           class=" mx-2 "
@@ -170,6 +169,7 @@
         ></v-text-field>
       </v-card-title>
       <v-data-table
+        contain
         dense
         :items-per-page="5"
         :headers="headgoogle"
@@ -212,13 +212,8 @@ export default {
           value: 'name',
         },
         { text: 'Titel', value: 'titel' },
-        {
-          text: 'Kommentar',
-          value: 'komment',
-          align: 'start',
-        },
+        { text: 'Kommentar', value: 'komment', align: 'start' },
         { text: 'Gesamtzufriedenheit', value: 'gesamt' },
-
         { text: 'Positive', value: 'positive' },
         { text: 'Quelle', value: 'source' },
       ],
@@ -235,7 +230,6 @@ export default {
         { text: 'Kommentar', value: 'komment' },
         { text: 'Sterne', value: 'sterne' },
         { text: 'Positive', value: 'positive' },
-
         { text: 'Quelle', value: 'source' },
       ],
       google: gjson,

@@ -1,6 +1,6 @@
 <template>
-  <v-container row wrap fluid>
-    <v-flex xs12 sm6 md4 lg3 v-for="card in cards" :key="card">
+  <v-container row wrap>
+    <v-flex xs12 sm6 md4 lg4 v-for="card in cards" :key="card">
       <v-card hover class="ma-3" justify-center>
         <v-layout column align-center fill-height class="text-center ">
           <v-img :src="card"></v-img>
