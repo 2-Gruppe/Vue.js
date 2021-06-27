@@ -1,8 +1,9 @@
 <template lang="">
   <v-container fluid class="grey lighten-5">
-    <v-row class="mb-3" no-gutters>
+    <v-row class="mb-3" dense>
       <v-card
         v-ripple
+        hover
         xs12
         sm6
         md4
@@ -23,14 +24,16 @@
           <v-row align="center" class="mx-0">
             <v-rating
               :value="n.sterne"
-              color="amber"
-              dense
               half-increments
-              readonly
-              size="14"
+              dense
+              color="orange"
+              background-color="orange"
+              hover
+              class="mr-2"
             ></v-rating>
-
-            <div class="grey--text ms-4">{{ n.sterne }} ({{ n.review }})</div>
+            <span class="primary--text text-subtitle-2"
+              >{{ n.sterne }} ({{ n.review }})</span
+            >
           </v-row>
 
           <div
@@ -47,7 +50,6 @@
         </v-card-text>
         <v-card-actions>
           <v-btn block color="orange lighten-1" elevation="10" :to="n.route">
-            <!-- <v-icon color="dark">mdi-magnify</v-icon> -->
             MEHR
           </v-btn>
 
@@ -63,6 +65,7 @@ export default {
   data() {
     return {
       show: false,
+      overlay: false,
 
       KlinikDaten: [
         {

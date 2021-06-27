@@ -1,43 +1,74 @@
 <template>
-  <v-container row wrap>
-    <v-flex xs12 sm6 md4 lg4 v-for="card in cards" :key="card">
-      <v-card hover class="ma-3" justify-center>
-        <v-layout column align-center fill-height class="text-center ">
-          <v-img :src="card"></v-img>
+  <v-container class="grey lighten-5">
+    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+    <v-row class="my-1">
+      <v-col cols="12" md="12">
+        <v-img height="160" src="../assets/team/team5.jpg"></v-img>
+      </v-col>
+    </v-row>
 
-          <v-card-title class="font-weight-light">{{
-            card.title
-          }}</v-card-title>
-          <v-card-text align-center>
+    <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+    <v-row>
+      <v-col v-for="card in cards" :key="card" cols="12" md="4" xs="6">
+        <v-card
+          v-riple
+          hover
+          flat
+          tile
+          width="100%"
+          class="grey lighten-4 text-start"
+        >
+          <v-img width="100%" height="300" :src="card"> </v-img>
+          <v-col cols="auto">
+            <v-dialog transition="dialog-bottom-transition" max-width="600">
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  class="mt-0 text-start"
+                  small
+                  color="red lighten-1 white--text"
+                  v-bind="attrs"
+                  v-on="on"
+                  >{{ card.title }}</v-btn
+                >
+              </template>
+              <template v-slot:default="dialog">
+                <v-card>
+                  <v-toolbar color="error" dark>{{ card.title }}</v-toolbar>
+                  <v-card-text>
+                    <div class="text-h6 pa-12">{{ card.text }}</div>
+                  </v-card-text>
+                  <v-card-actions class="justify-end">
+                    <v-btn text @click="dialog.value = false">Close</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </template>
+            </v-dialog>
+          </v-col>
+
+          <v-card-subtitle class="mt-0  text-h6">
+            {{ card.sub }}
+          </v-card-subtitle>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn color="primary" v-bind="attrs" v-on="on"
+              >From the bottom</v-btn
+            >
+          </template>
+          <v-divider></v-divider>
+
+          <v-card-text class="grey lighten-3 text-center">
             <v-btn
+              color="red lighten-1 mx-0"
               v-for="icon in icons"
               :key="icon"
-              class="mx-4 "
-              color="grey darken-3"
               icon
             >
-              <v-icon size="24px">
-                {{ icon }}
-              </v-icon>
+              <v-icon size="24px">{{ icon }}</v-icon>
             </v-btn>
           </v-card-text>
-          <v-spacer></v-spacer>
-
-          <v-card-text>
-            <v-expansion-panels focusable>
-              <v-expansion-panel id="synopsis">
-                <v-expansion-panel-header color="red lighten-1">{{
-                  card.sub
-                }}</v-expansion-panel-header>
-                <v-expansion-panel-content>{{
-                  card.text
-                }}</v-expansion-panel-content>
-              </v-expansion-panel>
-            </v-expansion-panels>
-          </v-card-text>
-        </v-layout>
-      </v-card>
-    </v-flex>
+          <v-divider></v-divider>
+        </v-card>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 <script>
@@ -60,7 +91,7 @@ export default {
           'Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl',
         sub: 'Web Entwickler',
         title: 'Hakan Ünlü',
-        src: require('../assets/team/team3.jpg'),
+        src: require('../assets/team/team2.jpg'),
       },
       {
         icon: 'mdi-github',
@@ -68,7 +99,7 @@ export default {
           'Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl',
         sub: 'App Entwickler',
         title: 'Hussain',
-        src: require('../assets/team/team3.jpg'),
+        src: require('../assets/team/team1jpg.jpg'),
       },
     ],
   }),

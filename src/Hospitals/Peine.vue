@@ -3,7 +3,13 @@
     <v-row>
       <!-- Klinikbewertungen carousel -->
       <v-col cols="9">
-        <v-card fill-height elevation="24" class="mx-auto my-3" v-if="show">
+        <v-card
+          fill-height
+          elevation="24"
+          class="mx-auto my-3"
+          v-if="show"
+          color="white"
+        >
           <v-carousel
             :continuous="true"
             :show-arrows="true"
@@ -53,6 +59,7 @@
           md6
           lg3
           v-if="!show"
+          color="white"
         >
           <v-carousel
             :continuous="true"

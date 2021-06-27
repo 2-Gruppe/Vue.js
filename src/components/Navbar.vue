@@ -7,9 +7,16 @@
       <v-toolbar-title class=" white--text">
         <span class="font-weight-light">Team</span>
         <strong class=" font-weight-medium">HFH</strong>
+        <v-switch
+          width="100%"
+          class="my-8 mx-1 align-center "
+          v-model="$vuetify.theme.dark"
+          label="Dunkellll"
+          persistent-hint
+        ></v-switch>
       </v-toolbar-title>
-      <!-- <v-spacer></v-spacer> -->
-      <v-flex class="d-flex flex-row justify-end  mx-auto  align-start">
+
+      <v-flex class="d-flex flex-row mx-auto justify-end" xs12 lg12 md12 sm12>
         <v-btn
           rounded
           elevation="1"
@@ -85,6 +92,12 @@
 export default {
   data: function() {
     return {
+      props: {
+        attrs: {
+          type: Object,
+          default: () => ({}),
+        },
+      },
       drawer: false,
 
       links: [
@@ -94,11 +107,6 @@ export default {
           icon: 'mdi-forum',
           text: 'Kontakt ',
           route: '/Kontakt',
-        },
-        {
-          icon: 'mdi-account-supervisor ',
-          text: 'Null',
-          route: '/',
         },
 
         {
