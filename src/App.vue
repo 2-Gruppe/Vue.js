@@ -1,7 +1,6 @@
 <template lang="">
   <v-app>
     <Navbar />
-
     <v-content>
       <router-view></router-view>
       <router-view name="Cards"></router-view>

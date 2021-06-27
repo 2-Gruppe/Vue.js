@@ -1,95 +1,74 @@
 <template>
-  <v-card class="mx-auto" max-width="750">
-    <v-container fluid>
-      <v-row>
-        <v-col v-for="card in cards" :key="card.title" :cols="card.flex">
-          <v-card hover>
-            <v-img
-              :src="card.src"
-              class="white--text align-end justify-center"
-              gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-              height="200px"
+  <v-container row wrap fluid>
+    <v-flex xs12 sm6 md4 lg3 v-for="card in cards" :key="card">
+      <v-card hover class="ma-3" justify-center>
+        <v-layout column align-center fill-height class="text-center ">
+          <v-img :src="card"></v-img>
+
+          <v-card-title class="font-weight-light">{{
+            card.title
+          }}</v-card-title>
+          <v-card-text align-center>
+            <v-btn
+              v-for="icon in icons"
+              :key="icon"
+              class="mx-4 "
+              color="grey darken-3"
+              icon
             >
-              <v-card-title v-text="card.title"></v-card-title>
-              <v-card-subtitle
-                class="orange--text"
-                v-text="card.sub"
-              ></v-card-subtitle>
-            </v-img>
-            <v-dialog transition="dialog-bottom-transition" max-width="600">
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn
-                  class="justify-end"
-                  icon
-                  color="error"
-                  v-bind="attrs"
-                  v-on="on"
-                  ><v-icon>mdi-account-details-outline</v-icon></v-btn
-                >
-                <v-btn icon>
-                  <v-icon>mdi-github</v-icon>
-                </v-btn>
-                <v-btn icon>
-                  <v-icon>mdi-linkedin </v-icon>
-                </v-btn>
+              <v-icon size="24px">
+                {{ icon }}
+              </v-icon>
+            </v-btn>
+          </v-card-text>
+          <v-spacer></v-spacer>
 
-                <v-btn icon>
-                  <v-icon>mdi-xing</v-icon>
-                </v-btn>
-              </template>
-              <template v-slot:default="dialog">
-                <v-card>
-                  <v-toolbar color="primary" dark
-                    >Opening from the bottom</v-toolbar
-                  >
-                  <v-card-text>
-                    <div class="text-h6 pa-12">Hello world!</div>
-                  </v-card-text>
-                  <v-card-actions class="justify-end">
-                    <v-btn text @click="dialog.value = false">Close</v-btn>
-                  </v-card-actions>
-                </v-card>
-              </template>
-            </v-dialog>
-
-            <v-card-actions>
-              <v-spacer></v-spacer>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-card>
+          <v-card-text>
+            <v-expansion-panels focusable>
+              <v-expansion-panel id="synopsis">
+                <v-expansion-panel-header color="red lighten-1">{{
+                  card.sub
+                }}</v-expansion-panel-header>
+                <v-expansion-panel-content>{{
+                  card.text
+                }}</v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
+          </v-card-text>
+        </v-layout>
+      </v-card>
+    </v-flex>
+  </v-container>
 </template>
 <script>
 export default {
   data: () => ({
+    icons: ['mdi-twitter', 'mdi-linkedin', 'mdi-xing', 'mdi-github'],
     cards: [
-      // {
-      //   title: 'Unser Team',
-      //   src: require('../assets/team/team3.jpg'),
-      //   flex: 12,
-      // },
       {
-        text: 'asdfghjklwertyuiop',
+        icon: 'mdi-xing',
+        text:
+          'Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl',
+        src: require('../assets/team/team3.jpg'),
         sub: 'Data Scientist',
         title: 'Fahri Çiğdem',
-        src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg',
-        flex: 4,
       },
+
       {
-        text: 'asdfghjklwertyuiop',
+        icon: 'mdi-linkedin',
+        text:
+          'Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl',
         sub: 'Web Entwickler',
         title: 'Hakan Ünlü',
-        src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg',
-        flex: 4,
+        src: require('../assets/team/team3.jpg'),
       },
       {
-        text: 'asdfghjklwertyuiop',
+        icon: 'mdi-github',
+        text:
+          'Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl',
         sub: 'App Entwickler',
         title: 'Hussain',
-        src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg',
-        flex: 4,
+        src: require('../assets/team/team3.jpg'),
       },
     ],
   }),

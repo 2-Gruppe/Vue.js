@@ -9,7 +9,14 @@
     hide-delimiter-background
     show-arrows-on-hover
   >
-    <v-carousel-item v-for="item in items" :key="item" :src="item"
+    <v-carousel-item
+      xs12
+      sm6
+      md4
+      lg3
+      v-for="item in items"
+      :key="item"
+      :src="item"
       ><h1
         class=" display-1 my-3 mx-15 font-weight-bold grey--text text--darken-1 my-5 text-left"
       >

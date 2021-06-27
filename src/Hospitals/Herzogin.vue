@@ -1,98 +1,105 @@
 <template lang="">
-  <v-layout row>
-    <br />
-    <!-- Klinikbewertungen carousel -->
-
-    <v-card
-      fill-height
-      elevation="24"
-      min-width="374"
-      max-width="750"
-      class="mx-auto my-6"
-      xs12
-      sm6
-      md6
-      lg3
-      v-if="show"
-    >
-      <v-carousel
-        :continuous="true"
-        :show-arrows="true"
-        hide-delimiter-background
-        delimiter-icon="mdi-minus"
-        height="450"
-      >
-        <v-carousel-item
-          xs12
-          sm6
-          md4
-          lg3
-          v-for="(slide, i) in images"
-          :key="i"
-          :src="slide.src"
+  <v-container dense>
+    <v-row>
+      <!-- Klinikbewertungen carousel -->
+      <v-col cols="9">
+        <v-card
+          width="100%"
+          fill-height
+          elevation="24"
+          class="mx-auto my-3"
+          v-if="show"
         >
-          <strong>
-            {{ slide.name }}
-          </strong>
-        </v-carousel-item>
-      </v-carousel>
-    </v-card>
+          <v-carousel
+            :continuous="true"
+            :show-arrows="true"
+            hide-delimiter-background
+            delimiter-icon="mdi-minus"
+            height="380"
+          >
+            <v-carousel-item
+              v-for="(slide, i) in images"
+              :key="i"
+              :src="slide.src"
+            >
+              <strong absolute class="my-1">
+                {{ slide.name }}
+              </strong>
+            </v-carousel-item>
+          </v-carousel>
+        </v-card>
+      </v-col>
+      <!-- Switch button -->
+
+      <v-col cols="3" class="mt-0">
+        <v-switch
+          v-if="show"
+          class=" mx-2 "
+          v-model="show"
+          color="grey lighten-1"
+          label="Quelle auswählen"
+        ></v-switch>
+        <strong v-if="show" class="green--text mx-2 mb-2"
+          >Klinikbewertungen.de</strong
+        >
+      </v-col>
+    </v-row>
 
     <!-- GoogleMaps carousel -->
-
-    <v-card
-      elevation="24"
-      min-width="374"
-      max-width="750"
-      class="mx-auto my-6"
-      xs12
-      sm6
-      md4
-      lg3
-      v-if="!show"
-    >
-      <v-system-bar lights-out> </v-system-bar>
-
-      <v-carousel
-        :continuous="true"
-        :show-arrows="true"
-        hide-delimiter-background
-        delimiter-icon="mdi-minus"
-        height="450"
-      >
-        <v-carousel-item
-          v-for="(img, i) in googleimages"
-          :key="i"
-          :src="img.src"
+    <v-row>
+      <v-col cols="9">
+        <v-card
+          fill-height
+          elevation="24"
+          class="mx-auto my-3"
+          xs12
+          sm6
+          md6
+          lg3
+          v-if="!show"
         >
-          <strong class="font-weight-bold text-h6 mx-2">
-            {{ img.name }}
-          </strong>
-        </v-carousel-item>
-      </v-carousel>
-    </v-card>
-
-    <!-- Switch button -->
-
-    <v-col cols="12" class="mt-0">
-      <storng v-if="!show" class="red--text mx-2 mb-2">GoogleMaps</storng>
-      <strong v-if="show" class="green--text mx-2 mb-2"
-        >Klinikbewertungen.de</strong
-      >
-      <v-switch
-        class=" mx-2 "
-        v-model="show"
-        color="grey lighten-1"
-        label="Source auswählen"
-      ></v-switch>
-    </v-col>
+          <v-carousel
+            :continuous="true"
+            :show-arrows="true"
+            hide-delimiter-background
+            delimiter-icon="mdi-minus"
+            height="380"
+          >
+            <v-carousel-item
+              xs12
+              sm6
+              md4
+              lg3
+              v-for="(slide, i) in googleimages"
+              :key="i"
+              :src="slide.src"
+            >
+              <strong class="pt-16">
+                {{ slide.name }}
+              </strong>
+            </v-carousel-item>
+          </v-carousel>
+        </v-card>
+      </v-col>
+      <!-- Switch button -->
+      <v-col cols="3" class="mt-0">
+        <v-switch
+          label="Quelle auswählen"
+          v-if="!show"
+          class=" mx-2 "
+          v-model="show"
+          color="grey lighten-1"
+        ></v-switch>
+        <storng v-if="!show" class="red--text mx-2 mb-2">GoogleMaps</storng>
+      </v-col>
+    </v-row>
 
     <!-- Klinikbewertungen data -->
 
     <v-card
       elevation="10"
       tile
-      class=" my-12 rounded-lg  "
+      class=" my-6 rounded-lg  "
       xs12
       sm6
       md4
@@ -103,7 +110,7 @@
         Kliniken
 
         <span class="red--text subtitle-1  mx-7"
-          >{{ kjson.length }} Bewertungen gefunden</span
+          >{{ kjson.length }} Kommantare gefunden</span
         >
         <v-spacer></v-spacer>
         <v-text-field
@@ -126,8 +133,13 @@
           <v-chip :color="getFarbe(item.gesamt)" dark>
             {{ item.gesamt }}
           </v-chip>
-        </template></v-data-table
-      >
+        </template>
+        <template v-slot:item.positive="{ item }">
+          <v-chip :color="getPos(item.positive)" dark>
+            {{ item.positive }}
+          </v-chip>
+        </template>
+      </v-data-table>
     </v-card>
 
     <!-- GoogleMaps data -->
@@ -139,14 +151,14 @@
       md4
       lg3
       tile
-      class=" my-12 rounded-lg "
+      class=" my-6 rounded-lg  "
       v-if="!show"
     >
       <v-card-title>
         Kliniken
 
         <span class="red--text subtitle-1  mx-7"
-          >{{ gjson.length }} Bewertungen gefunden</span
+          >{{ gjson.length }} Kommantare gefunden</span
         >
         <v-spacer></v-spacer>
         <v-text-field
@@ -170,9 +182,14 @@
             {{ item.sterne }}
           </v-chip>
         </template>
+        <template v-slot:item.positive="{ item }">
+          <v-chip :color="getPos(item.positive)" dark>
+            {{ item.positive }}
+          </v-chip>
+        </template>
       </v-data-table>
     </v-card>
-  </v-layout>
+  </v-container>
 </template>
 <script>
 import kjson from '../assets/klinik by klinik json/Herzogin Elisabeth Hospital_klinikDe.json';
@@ -190,30 +207,36 @@ export default {
       headers: [
         {
           text: 'Kliniken',
-          align: 'center',
+          align: 'start',
           sortable: true,
           value: 'name',
         },
         { text: 'Titel', value: 'titel' },
-        { text: 'Komment', value: 'komment', align: 'start' },
-        { text: 'Gesamt', value: 'gesamt' },
+        {
+          text: 'Kommentar',
+          value: 'komment',
+          align: 'start',
+        },
+        { text: 'Gesamtzufriedenheit', value: 'gesamt' },
+
         { text: 'Positive', value: 'positive' },
-        { text: 'Source', value: 'source' },
+        { text: 'Quelle', value: 'source' },
       ],
       klinikdaten: kjson,
 
       headgoogle: [
         {
           text: 'Kliniken',
-          align: 'center',
+          align: 'start',
           sortable: true,
           value: 'name',
         },
 
-        { text: 'komment', value: 'komment' },
-        { text: 'sterne', value: 'sterne' },
-        { text: 'positive', value: 'positive' },
-        { text: 'source', value: 'source' },
+        { text: 'Kommentar', value: 'komment' },
+        { text: 'Sterne', value: 'sterne' },
+        { text: 'Positive', value: 'positive' },
+
+        { text: 'Quelle', value: 'source' },
       ],
       google: gjson,
 
@@ -265,6 +288,10 @@ export default {
       else if (gesamt === 'zufrieden') return 'primary';
       else if (gesamt === 'weniger zufrieden') return 'warning';
       else if (gesamt === 'unzufrieden') return 'error';
+    },
+    getPos(positive) {
+      if (positive === 1) return 'success';
+      else if (positive === 0) return 'error';
     },
   },
 };

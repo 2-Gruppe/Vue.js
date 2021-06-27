@@ -2,11 +2,11 @@
   <v-container fluid class="grey lighten-5">
     <v-row class="mb-3" no-gutters>
       <v-card
+        v-ripple
         xs12
         sm6
         md4
         lg3
-        expand-on-hover
         v-for="n in KlinikDaten"
         :key="n"
         elevation="10"
