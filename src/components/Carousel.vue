@@ -18,11 +18,11 @@
       :key="item"
       :src="item"
     >
-      <h2
-        class=" display-6 my-3 mx-15 font-weight-bold red--text text--lighten-2 my-5 text-left"
+      <h1
+        class=" display-5  mx-15 font-weight-thin error--text text--darken-4 my-5 text-left align-center font-italic"
       >
         Daten sind das Öl des 21. Jahrhunderts
-      </h2>
+      </h1>
     </v-carousel-item>
   </v-carousel>
 </template>
@@ -37,9 +37,9 @@ export default {
         {
           src: require('../assets/c9.png'),
         },
-        {
-          src: require('../assets/c10.png'),
-        },
+        // {
+        //   src: require('../assets/c10.png'),
+        // },
         {
           src: require('../assets/data1.jpg'),
         },

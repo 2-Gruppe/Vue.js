@@ -1,4 +1,4 @@
-<template>
+<template lang="">
   <v-container class="grey lighten-5">
     <!-- Stack the columns on mobile by making one full-width and the other half-width -->
     <v-row class="my-1">
@@ -85,7 +85,7 @@ export default {
         icon: 'mdi-xing',
         text:
           'Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl',
-        src: require('../assets/team/t.png'),
+        src: require('../assets/team/fahri.jpeg'),
         sub: 'Data Scientist',
         title: 'Fahri Çiğdem',
       },
@@ -103,8 +103,8 @@ export default {
         text:
           'Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl',
         sub: 'App Entwickler',
-        title: 'Hussain',
-        src: require('../assets/team/t.png'),
+        title: 'Al_Azzawi Hussain',
+        src: require('../assets/team/Hussain.jpeg'),
       },
     ],
   }),

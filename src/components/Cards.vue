@@ -4,16 +4,12 @@
       <v-card
         v-ripple
         hover
-        xs12
-        sm6
-        md4
-        lg3
         v-for="n in KlinikDaten"
         :key="n"
         elevation="10"
         tile
-        class=" mx-auto my-12 rounded-lg "
-        max-width="374"
+        class="mx-auto my-12 rounded-lg "
+        max-width="400"
         :to="n.route"
       >
         <v-img height="200" :src="n.src"></v-img>
