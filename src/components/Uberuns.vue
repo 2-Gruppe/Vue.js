@@ -1,7 +1,6 @@
 <template lang="">
   <v-container class="grey lighten-5">
-    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
-    <v-row class="my-1">
+    <v-row>
       <v-col cols="12" md="12">
         <v-img
           elevation="20"
@@ -76,10 +75,10 @@
     </v-row>
   </v-container>
 </template>
+<style lang=""></style>
 <script>
 export default {
   data: () => ({
-    icons: ['mdi-twitter', 'mdi-linkedin', 'mdi-xing', 'mdi-github'],
     cards: [
       {
         icon: 'mdi-xing',
@@ -107,6 +106,7 @@ export default {
         src: require('../assets/team/Hussain.jpeg'),
       },
     ],
+    icons: ['mdi-twitter', 'mdi-linkedin', 'mdi-xing', 'mdi-github'],
   }),
 };
 </script>

@@ -18,9 +18,7 @@
       :key="item"
       :src="item"
     >
-      <h1
-        class=" display-5  mx-15 font-weight-thin error--text text--darken-4 my-5 text-left align-center font-italic"
-      >
+      <h1 class="pa-md-4 mx-lg-auto grey--text font-weight-bold ">
         Daten sind das Öl des 21. Jahrhunderts
       </h1>
     </v-carousel-item>
