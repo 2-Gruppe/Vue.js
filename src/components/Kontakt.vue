@@ -1,6 +1,6 @@
 <template lang="">
-  <v-card dense class="mx-auto my-2" style="max-width: 500px;">
-    <v-card-title class="error--text ">KONTAKT</v-card-title>
+  <v-card dense elevation="20" class="mx-auto my-2" style="max-width: 500px;">
+    <v-card-title class="error--text ">Kontaktieren Sie uns</v-card-title>
     <v-form ref="form" v-model="form" class="pa-2 ">
       <v-text-field
         v-model="password"

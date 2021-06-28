@@ -7,7 +7,7 @@
     lg3
     height="500"
     hide-delimiter-background
-    show-arrows-on-hover
+    :show-arrows="true"
   >
     <v-carousel-item
       xs12
@@ -17,18 +17,13 @@
       v-for="item in items"
       :key="item"
       :src="item"
-      ><h1
-        class=" display-1 my-3 mx-15 font-weight-bold grey--text text--darken-1 my-5 text-left"
-      >
-        Data ist Macht!
-      </h1>
-
-      <h3
-        class="display-5 my-3 mx-15  font-weight-bold grey--text text--darken-3 my-5 text-left"
-      >
-        Wir beleuchten gerne Ihren Weg zum Ziel!
-      </h3></v-carousel-item
     >
+      <h2
+        class=" display-6 my-3 mx-15 font-weight-bold red--text text--lighten-2 my-5 text-left"
+      >
+        Daten sind das Öl des 21. Jahrhunderts
+      </h2>
+    </v-carousel-item>
   </v-carousel>
 </template>
 <script>

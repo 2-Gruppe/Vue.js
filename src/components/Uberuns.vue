@@ -3,7 +3,11 @@
     <!-- Stack the columns on mobile by making one full-width and the other half-width -->
     <v-row class="my-1">
       <v-col cols="12" md="12">
-        <v-img height="160" src="../assets/team/team5.jpg"></v-img>
+        <v-img
+          elevation="20"
+          height="160"
+          src="../assets/team/team5.jpg"
+        ></v-img>
       </v-col>
     </v-row>
 
@@ -11,6 +15,7 @@
     <v-row>
       <v-col v-for="card in cards" :key="card" cols="12" md="4" xs="6">
         <v-card
+          elevation="20"
           v-riple
           hover
           flat
@@ -80,7 +85,7 @@ export default {
         icon: 'mdi-xing',
         text:
           'Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl',
-        src: require('../assets/team/team3.jpg'),
+        src: require('../assets/team/t.png'),
         sub: 'Data Scientist',
         title: 'Fahri Çiğdem',
       },
@@ -91,7 +96,7 @@ export default {
           'Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl',
         sub: 'Web Entwickler',
         title: 'Hakan Ünlü',
-        src: require('../assets/team/team2.jpg'),
+        src: require('../assets/team/t.png'),
       },
       {
         icon: 'mdi-github',
@@ -99,7 +104,7 @@ export default {
           'Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl',
         sub: 'App Entwickler',
         title: 'Hussain',
-        src: require('../assets/team/team1jpg.jpg'),
+        src: require('../assets/team/t.png'),
       },
     ],
   }),

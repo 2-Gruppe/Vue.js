@@ -1,29 +1,29 @@
 <template lang="">
   <nav>
     <v-app-bar color="grey lighten-1" elevation="1" dark app flat>
-      <v-app-bar-nav-icon id="drawerIcon" @click="drawer = !drawer">
+      <v-app-bar-nav-icon id="drawerIcon" size="48px" @click="drawer = !drawer">
       </v-app-bar-nav-icon>
       <img class="mr-3" :src="require('../assets/analytics.png')" height="35" />
-      <v-toolbar-title class=" white--text">
-        <span class="font-weight-light">Team</span>
-        <strong class=" font-weight-medium">HFH</strong>
-        <v-switch
-          width="100%"
-          class="my-8 mx-1 align-center "
-          v-model="$vuetify.theme.dark"
-          label="Dunkellll"
-          persistent-hint
-        ></v-switch>
-      </v-toolbar-title>
+      <span class="font-weight-light d-none d-sm-flex">Team</span>
+      <strong class=" font-weight-medium d-none d-sm-flex">HFH</strong>
+      <v-switch
+        color="black"
+        value="black"
+        label="Dunkel"
+        class="mt-5 ml-4"
+        v-model="$vuetify.theme.dark"
+      ></v-switch>
 
-      <v-flex class="d-flex flex-row mx-auto justify-end" xs12 lg12 md12 sm12>
+      <v-toolbar-title class="white--text"> </v-toolbar-title>
+
+      <v-flex class="d-flex flex-row justify-end" xs12 sm12 md12 lg12>
         <v-btn
           rounded
           elevation="1"
           text
           small
           color="black"
-          class="my-5  white--text"
+          class="my-5  white--text d-none d-sm-flex"
           router
           to="/"
         >
