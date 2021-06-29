@@ -28,8 +28,9 @@
               hover
               class="mr-2  mb-4 "
             ></v-rating>
+
             <span class="primary--text text-subtitle-2 mb-4 "
-              >{{ n.sterne }} ({{ n.review }})</span
+              >{{ n.sterne }} ({{ n.review }}) Google Bewertungen</span
             >
           </v-row>
           <v-spacer></v-spacer>

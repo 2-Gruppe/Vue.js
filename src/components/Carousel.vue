@@ -18,9 +18,9 @@
       :key="item"
       :src="item"
     >
-      <h1 class="pa-md-4 mx-lg-auto grey--text font-weight-bold ">
+      <!-- <h1 class="pa-md-4 mx-lg-auto grey--text font-weight-bold ">
         Daten sind das Öl des 21. Jahrhunderts
-      </h1>
+      </h1> -->
     </v-carousel-item>
   </v-carousel>
 </template>
