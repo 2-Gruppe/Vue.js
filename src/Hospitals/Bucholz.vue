@@ -116,8 +116,8 @@
         Kliniken
 
         <span class="red--text subtitle-1  mx-7"
-          >{{ kjson.length }} Kommantare gefunden</span
-        >
+          >{{ kjson.length }} Kommantare gefunden
+        </span>
         <v-spacer></v-spacer>
         <v-text-field
           v-model="search"
@@ -140,6 +140,7 @@
             {{ item.gesamt }}
           </v-chip>
         </template>
+
         <template v-slot:item.positive="{ item }">
           <v-chip :color="getPos(item.positive)" dark>
             {{ item.positive }}
@@ -164,8 +165,8 @@
         Kliniken
 
         <span class="red--text subtitle-1  mx-7"
-          >{{ gjson.length }} Kommantare gefunden</span
-        >
+          >{{ gjson.length }} Kommantare gefunden
+        </span>
         <v-spacer></v-spacer>
         <v-text-field
           v-model="search"

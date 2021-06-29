@@ -1,5 +1,5 @@
 <template lang="">
-  <v-app>
+  <v-app id="scroll-target">
     <Navbar />
     <v-content>
       <router-view></router-view>

@@ -19,6 +19,19 @@
             {{ icon }}
           </v-icon>
         </v-btn>
+        <v-btn
+          v-scroll="onScroll"
+          v-show="fab"
+          fab
+          dark
+          fixed
+          bottom
+          right
+          color="primary"
+          @click="toTop"
+        >
+          <v-icon color="white"> mdi-arrow-up </v-icon>
+        </v-btn>
       </v-card-title>
     </v-card>
   </v-footer>
@@ -26,8 +39,19 @@
 <script>
 export default {
   data: () => ({
+    fab: false,
     icons: ['mdi-twitter', 'mdi-linkedin', 'mdi-instagram', 'mdi-github'],
   }),
+  methods: {
+    onScroll(e) {
+      if (typeof window === 'undefined') return;
+      const top = window.pageYOffset || e.target.scrollTop || 0;
+      this.fab = top > 20;
+    },
+    toTop() {
+      this.$vuetify.goTo(0);
+    },
+  },
 };
 </script>
 <style scoped></style>
