@@ -20,9 +20,9 @@
           flat
           tile
           width="100%"
-          class="grey lighten-4 text-start zoom"
+          class="grey lighten-4 text-start "
         >
-          <v-img width="100%" height="300" :src="card"> </v-img>
+          <v-img class="zoom" width="100%" height="300" :src="card"> </v-img>
           <v-col cols="auto">
             <v-dialog transition="dialog-bottom-transition" max-width="600">
               <template v-slot:activator="{ on, attrs }">
@@ -104,7 +104,7 @@ export default {
           'Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl Lorem ipsum carrots enhanced rebates. Most flexibl',
         sub: 'Web Entwickler',
         title: 'Hakan Ünlü',
-        src: require('../assets/team/profil1.jpg'),
+        src: require('../assets/team/profil2.jpg'),
       },
       {
         icon: 'mdi-github',

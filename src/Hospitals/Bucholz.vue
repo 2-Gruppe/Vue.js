@@ -190,6 +190,7 @@
             {{ item.sterne }}
           </v-chip>
         </template>
+
         <template v-slot:item.positive="{ item }">
           <v-chip :color="getPos(item.positive)" dark>
             {{ item.positive }}
@@ -302,4 +303,4 @@ export default {
   },
 };
 </script>
-<style lang=""></style>
+<style scoped></style>
