@@ -11,9 +11,9 @@
   >
     <v-carousel-item
       xs12
-      sm6
-      md4
-      lg3
+      sm12
+      md12
+      lg12
       v-for="item in items"
       :key="item"
       :src="item"
@@ -35,9 +35,7 @@ export default {
         {
           src: require('../assets/c9.png'),
         },
-        // {
-        //   src: require('../assets/c10.png'),
-        // },
+
         {
           src: require('../assets/data1.jpg'),
         },
