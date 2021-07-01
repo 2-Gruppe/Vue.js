@@ -20,9 +20,9 @@
           flat
           tile
           width="100%"
-          class="grey lighten-4 text-start"
+          class="grey lighten-4 text-start zoom"
         >
-          <v-img class="zoom" width="100%" height="300" :src="card"> </v-img>
+          <v-img width="100%" height="300" :src="card"> </v-img>
           <v-col cols="auto">
             <v-dialog transition="dialog-bottom-transition" max-width="600">
               <template v-slot:activator="{ on, attrs }">
